@@ -11,12 +11,13 @@ if exist ".git" (
 	echo MsgBox "Project Pushed to Github  !"> msgbox.vbs
 	cscript msgbox.vbs
 	del "msgbox.vbs";
+	echo COMMIT.bat>.gitignore
 ) else (
 	git init
 	git remote add maisondesligues https://github.com/Basouli/maisondesligues.git
 	git remote set-url maisondesligues https://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@github.com/Basouli/maisondesligues.git
 	git fetch maisondesligues %name%:%name%
-	echo "COMMIT.bat">.gitignore
+	echo COMMIT.bat>.gitignore
 	git add -A
 	git commit -a -m "Script - %date%"
 	git push -u maisondesligues %name% --force

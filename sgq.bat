@@ -11,7 +11,6 @@ if exist ".git" (
 	echo MsgBox "Project Pushed to Github  !"> msgbox.vbs
 	cscript msgbox.vbs
 	del "msgbox.vbs";
-	echo COMMIT.bat>.gitignore
 ) else (
 	git init
 	git remote add maisondesligues https://github.com/Basouli/maisondesligues.git

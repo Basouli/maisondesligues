@@ -4,6 +4,7 @@ set name=basil
 
 if exist ".git" (
 #        C:\wamp64\bin\mysql\mysql5.7.31\bin\mysqldump -u root gsb_frais > bdd_restore\%date%.sql
+	echo COMMIT.bat>.gitignore
 	git switch %name%
 	git add -A
 	git commit -a -m "Script - %date%"

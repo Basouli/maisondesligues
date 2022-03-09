@@ -26,7 +26,7 @@ if exist ".git" (
 ) else (
 	#CREATE FILE .gitignore AND ADD TEXT TO IT
 	echo COMMIT.bat>.gitignore
-	echo .git>.gitignore
+	echo .git>>.gitignore
 
 	#CREATE GIT VERSIONING ON THE CURRENT DIRECTORY
 	git init

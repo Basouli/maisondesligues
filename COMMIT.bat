@@ -1,7 +1,7 @@
 @echo off
 
 #SET A VARIABLE TO ESTABLISH THE USER/BRANCH
-set name=basil
+set name=main
 
 #IF/ELSE ON GIT DIRECTORY EXISTING
 if exist ".git" (
@@ -26,7 +26,7 @@ if exist ".git" (
 ) else (
 	#CREATE FILE .gitignore AND ADD TEXT TO IT
 	echo COMMIT.bat>.gitignore
-	echo .git>.gitignore
+	echo .git>>.gitignore
 
 	#CREATE GIT VERSIONING ON THE CURRENT DIRECTORY
 	git init
@@ -35,7 +35,7 @@ if exist ".git" (
 	git remote add maisondesligues https://github.com/Basouli/maisondesligues.git
 
 	#SET DISTANT REMOTE URL WITH AUTHENTICATION TOKEN
-	git remote set-url maisondesligues https://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@github.com/Basouli/maisondesligues.git
+	git remote set-url maisondesligues https://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@github.com/Basouli/maisondesligues.git
 	
 	#FETCH CURRENT DIRECTORY WITH DISTANT REPOSITORY
 	git fetch maisondesligues %name%:%name%

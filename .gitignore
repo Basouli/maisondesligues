@@ -9,3 +9,4 @@
 /vendor/
 .git
 ###< symfony/framework-bundle ###
+/nbproject/private/

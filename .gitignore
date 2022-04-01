@@ -8,5 +8,5 @@
 /var/
 /vendor/
 .git
-COMMIT.bat
 ###< symfony/framework-bundle ###
+/nbproject/private/

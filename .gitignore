@@ -10,3 +10,7 @@
 .git
 ###< symfony/framework-bundle ###
 /nbproject/private/
+
+###> symfony/web-server-bundle ###
+/.web-server-pid
+###< symfony/web-server-bundle ###

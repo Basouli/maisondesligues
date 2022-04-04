@@ -1,22 +1,22 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '59eaee90c88746ebba37b5c8d5ac9d841c26ddc9',
+        'reference' => 'fba48cda44dc671b9a40117ab56c04a4a3017841',
         'name' => '__root__',
         'dev' => true,
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '59eaee90c88746ebba37b5c8d5ac9d841c26ddc9',
+            'reference' => 'fba48cda44dc671b9a40117ab56c04a4a3017841',
             'dev_requirement' => false,
         ),
         'doctrine/annotations' => array(
@@ -458,6 +458,15 @@
             'reference' => '5de4ba2d41b15f9bd0e19b2ab9674135813ec98f',
             'dev_requirement' => false,
         ),
+        'symfony/process' => array(
+            'pretty_version' => 'v4.4.37',
+            'version' => '4.4.37.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/process',
+            'aliases' => array(),
+            'reference' => 'b2d924e5a4cb284f293d5092b1dbf0d364cb8b67',
+            'dev_requirement' => true,
+        ),
         'symfony/routing' => array(
             'pretty_version' => 'v4.4.37',
             'version' => '4.4.37.0',
@@ -543,6 +552,15 @@
             'install_path' => __DIR__ . '/../symfony/web-profiler-bundle',
             'aliases' => array(),
             'reference' => 'f9a41e7a881512daaa4a39583cd7a8f760688d3b',
+            'dev_requirement' => true,
+        ),
+        'symfony/web-server-bundle' => array(
+            'pretty_version' => 'v4.4.37',
+            'version' => '4.4.37.0',
+            'type' => 'symfony-bundle',
+            'install_path' => __DIR__ . '/../symfony/web-server-bundle',
+            'aliases' => array(),
+            'reference' => '8cbf9d741b57f4dc298478768865d2e8385552c0',
             'dev_requirement' => true,
         ),
         'symfony/yaml' => array(

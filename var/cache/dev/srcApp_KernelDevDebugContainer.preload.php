@@ -10,7 +10,7 @@ if (in_array(PHP_SAPI, ['cli', 'phpdbg'], true)) {
 }
 
 require dirname(__DIR__, 3).''.\DIRECTORY_SEPARATOR.'vendor/autoload.php';
-require __DIR__.'/ContainerJbA7xPj/srcApp_KernelDevDebugContainer.php';
+require __DIR__.'/ContainerKSxJ1LC/srcApp_KernelDevDebugContainer.php';
 
 $classes = [];
 $classes[] = 'Symfony\Bundle\FrameworkBundle\FrameworkBundle';
@@ -21,6 +21,7 @@ $classes[] = 'Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle';
 $classes[] = 'Symfony\Bundle\MonologBundle\MonologBundle';
 $classes[] = 'Symfony\Bundle\WebProfilerBundle\WebProfilerBundle';
 $classes[] = 'Symfony\Bundle\DebugBundle\DebugBundle';
+$classes[] = 'Symfony\Bundle\WebServerBundle\WebServerBundle';
 $classes[] = 'Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser';
 $classes[] = 'Symfony\Bundle\FrameworkBundle\EventListener\ResolveControllerNameSubscriber';
 $classes[] = 'Symfony\Component\DependencyInjection\ServiceLocator';
@@ -239,5 +240,9 @@ $classes[] = 'Symfony\Bundle\WebProfilerBundle\Controller\RouterController';
 $classes[] = 'Symfony\Bundle\WebProfilerBundle\Csp\ContentSecurityPolicyHandler';
 $classes[] = 'Symfony\Bundle\WebProfilerBundle\Csp\NonceGenerator';
 $classes[] = 'Symfony\Bundle\WebProfilerBundle\EventListener\WebDebugToolbarListener';
+$classes[] = 'Symfony\Bundle\WebServerBundle\Command\ServerRunCommand';
+$classes[] = 'Symfony\Bundle\WebServerBundle\Command\ServerStartCommand';
+$classes[] = 'Symfony\Bundle\WebServerBundle\Command\ServerStatusCommand';
+$classes[] = 'Symfony\Bundle\WebServerBundle\Command\ServerStopCommand';
 
 Preloader::preload($classes);

@@ -15,5 +15,8 @@ return [
     '_profiler_router' => [['token'], ['_controller' => 'web_profiler.controller.router::panelAction'], [], [['text', '/router'], ['variable', '/', '[^/]++', 'token'], ['text', '/_profiler']], [], []],
     '_profiler_exception' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::body'], [], [['text', '/exception'], ['variable', '/', '[^/]++', 'token'], ['text', '/_profiler']], [], []],
     '_profiler_exception_css' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::stylesheet'], [], [['text', '/exception.css'], ['variable', '/', '[^/]++', 'token'], ['text', '/_profiler']], [], []],
+    'app_basil' => [[], ['_controller' => 'App\\Controller\\BasilController::index'], [], [['text', '/basil']], [], []],
     'app_main' => [[], ['_controller' => 'App\\Controller\\MainController::index'], [], [['text', '/main']], [], []],
+    'app_thomas' => [[], ['_controller' => 'App\\Controller\\ThomasController::index'], [], [['text', '/thomas']], [], []],
+    'app_vincent' => [[], ['_controller' => 'App\\Controller\\VincentController::index'], [], [['text', '/vincent']], [], []],
 ];

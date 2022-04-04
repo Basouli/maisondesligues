@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 04, 2022 at 01:09 PM
+-- Generation Time: Apr 04, 2022 at 01:22 PM
 -- Server version: 5.7.31
 -- PHP Version: 7.4.9
 
@@ -80,18 +80,18 @@ INSERT INTO `club` (`id`, `NOM`, `ADRESSE1`, `ADRESSE2`, `CP`, `VILLE`, `TEL`) V
 DROP TABLE IF EXISTS `licencie`;
 CREATE TABLE IF NOT EXISTS `licencie` (
   `id` int(3) NOT NULL AUTO_INCREMENT,
-  `NUMLICENCE` bigint(11) DEFAULT NULL,
-  `NOM` varchar(11) DEFAULT NULL,
-  `PRENOM` varchar(11) DEFAULT NULL,
-  `ADRESSE1` varchar(40) DEFAULT NULL,
-  `ADRESSE2` varchar(42) DEFAULT NULL,
-  `CP` varchar(6) DEFAULT NULL,
-  `VILLE` varchar(55) DEFAULT NULL,
-  `TEL` varchar(14) DEFAULT NULL,
-  `MAIL` varchar(51) DEFAULT NULL,
-  `IDCLUB` int(2) DEFAULT NULL,
-  `IDQUALITE` int(2) DEFAULT NULL,
-  `DATEADHESION` date DEFAULT NULL,
+  `NUMLICENCE` bigint(11) NOT NULL,
+  `NOM` varchar(70) NOT NULL,
+  `PRENOM` varchar(70) NOT NULL,
+  `ADRESSE1` varchar(255) NOT NULL,
+  `ADRESSE2` varchar(255) DEFAULT NULL,
+  `CP` varchar(6) NOT NULL,
+  `VILLE` varchar(70) NOT NULL,
+  `TEL` char(14) NOT NULL,
+  `MAIL` varchar(100) NOT NULL,
+  `IDCLUB` int(38) NOT NULL,
+  `IDQUALITE` int(38) NOT NULL,
+  `DATEADHESION` date NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=301 DEFAULT CHARSET=utf8;
 
@@ -410,15 +410,15 @@ INSERT INTO `licencie` (`id`, `NUMLICENCE`, `NOM`, `PRENOM`, `ADRESSE1`, `ADRESS
 
 DROP TABLE IF EXISTS `qualite`;
 CREATE TABLE IF NOT EXISTS `qualite` (
-  `ID` int(2) DEFAULT NULL,
-  `LIBELLEQUALITE` varchar(24) DEFAULT NULL
+  `id` int(2) NOT NULL,
+  `LIBELLEQUALITE` varchar(50) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `qualite`
 --
 
-INSERT INTO `qualite` (`ID`, `LIBELLEQUALITE`) VALUES
+INSERT INTO `qualite` (`id`, `LIBELLEQUALITE`) VALUES
 (1, 'Licencie'),
 (2, 'Président de ligue'),
 (3, 'Président de club'),

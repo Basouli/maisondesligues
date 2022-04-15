@@ -37,6 +37,12 @@ class Compte
      */
     private $roles;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Licencie::class, cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $licencie;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +92,18 @@ class Compte
     public function setRoles(string $roles): self
     {
         $this->roles = $roles;
+
+        return $this;
+    }
+
+    public function getLicencie(): ?Licencie
+    {
+        return $this->licencie;
+    }
+
+    public function setLicencie(Licencie $licencie): self
+    {
+        $this->licencie = $licencie;
 
         return $this;
     }

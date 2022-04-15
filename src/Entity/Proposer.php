@@ -22,6 +22,16 @@ class Proposer
      */
     private $tarifNuite;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Hotel::class, inversedBy="tarifs")
+     */
+    private $hotel;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=CategorieChambre::class, inversedBy="tarifs")
+     */
+    private $categorie;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -35,6 +45,30 @@ class Proposer
     public function setTarifNuite(float $tarifNuite): self
     {
         $this->tarifNuite = $tarifNuite;
+
+        return $this;
+    }
+
+    public function getHotel(): ?Hotel
+    {
+        return $this->hotel;
+    }
+
+    public function setHotel(?Hotel $hotel): self
+    {
+        $this->hotel = $hotel;
+
+        return $this;
+    }
+
+    public function getCategorie(): ?CategorieChambre
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?CategorieChambre $categorie): self
+    {
+        $this->categorie = $categorie;
 
         return $this;
     }

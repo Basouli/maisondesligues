@@ -27,6 +27,11 @@ class Vacation
      */
     private $dateheureFin;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Atelier::class, inversedBy="vacations")
+     */
+    private $atelier;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +57,18 @@ class Vacation
     public function setDateheureFin(\DateTimeInterface $dateheureFin): self
     {
         $this->dateheureFin = $dateheureFin;
+
+        return $this;
+    }
+
+    public function getAtelier(): ?Atelier
+    {
+        return $this->atelier;
+    }
+
+    public function setAtelier(?Atelier $atelier): self
+    {
+        $this->atelier = $atelier;
 
         return $this;
     }

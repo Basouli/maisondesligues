@@ -67,6 +67,18 @@ class Licencie
      */
     private $dateAdhesion;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Club::class, inversedBy="licencies")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $club;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Qualite::class, inversedBy="licencies")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $qualite;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -188,6 +200,30 @@ class Licencie
     public function setDateAdhesion(\DateTimeInterface $dateAdhesion): self
     {
         $this->dateAdhesion = $dateAdhesion;
+
+        return $this;
+    }
+
+    public function getClub(): ?Club
+    {
+        return $this->club;
+    }
+
+    public function setClub(?Club $club): self
+    {
+        $this->club = $club;
+
+        return $this;
+    }
+
+    public function getQualite(): ?Qualite
+    {
+        return $this->qualite;
+    }
+
+    public function setQualite(?Qualite $qualite): self
+    {
+        $this->qualite = $qualite;
 
         return $this;
     }

@@ -27,17 +27,6 @@ SET time_zone = "+00:00";
 -- Table structure for table `club`
 --
 
-DROP TABLE IF EXISTS `club`;
-CREATE TABLE IF NOT EXISTS `club` (
-  `id` int(2) NOT NULL AUTO_INCREMENT,
-  `NOM` varchar(50) DEFAULT NULL,
-  `ADRESSE1` varchar(60) NOT NULL,
-  `ADRESSE2` varchar(60) DEFAULT NULL,
-  `CP` char(5) NOT NULL,
-  `VILLE` varchar(60) NOT NULL,
-  `TEL` char(14) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `club`
@@ -77,29 +66,37 @@ INSERT INTO `club` (`id`, `NOM`, `ADRESSE1`, `ADRESSE2`, `CP`, `VILLE`, `TEL`) V
 -- Table structure for table `licencie`
 --
 
-DROP TABLE IF EXISTS `licencie`;
-CREATE TABLE IF NOT EXISTS `licencie` (
-  `id` int(3) NOT NULL AUTO_INCREMENT,
-  `NUMLICENCE` bigint(11) NOT NULL,
-  `NOM` varchar(70) NOT NULL,
-  `PRENOM` varchar(70) NOT NULL,
-  `ADRESSE1` varchar(255) NOT NULL,
-  `ADRESSE2` varchar(255) DEFAULT NULL,
-  `CP` varchar(6) NOT NULL,
-  `VILLE` varchar(70) NOT NULL,
-  `TEL` char(14) NOT NULL,
-  `MAIL` varchar(100) NOT NULL,
-  `IDCLUB` int(38) NOT NULL,
-  `IDQUALITE` int(38) NOT NULL,
-  `DATEADHESION` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=301 DEFAULT CHARSET=utf8;
+INSERT INTO `qualite` (`id`, `libelle_qualite`) VALUES
+(1, 'Licencie'),
+(2, 'Président de ligue'),
+(3, 'Président de club'),
+(4, 'Président de CD'),
+(5, 'Vice-Président de ligue'),
+(6, 'Vice-Président de club'),
+(7, 'Vice-Président de CD'),
+(8, 'secrétaire de ligue'),
+(9, 'secrétaire de club'),
+(10, 'secrétaire de CD'),
+(11, 'Trésorier de ligue'),
+(12, 'Trésorier de club'),
+(13, 'Trésorier de CD'),
+(14, 'Maitre d\'armes'),
+(15, 'Eleve Maitre'),
+(16, 'Cadre Technique Régional'),
+(17, 'Relais'),
+(18, 'Coordinateur de Pôle'),
+(19, 'Athlète de Haut Niveau'),
+(20, 'TBenevole de Club'),
+(21, 'Animateur'),
+(22, 'FFE'),
+(23, 'Trésorier de CD');
+COMMIT;
 
 --
 -- Dumping data for table `licencie`
 --
 
-INSERT INTO `licencie` (`id`, `NUMLICENCE`, `NOM`, `PRENOM`, `ADRESSE1`, `ADRESSE2`, `CP`, `VILLE`, `TEL`, `MAIL`, `IDCLUB`, `IDQUALITE`, `DATEADHESION`) VALUES
+INSERT INTO `licencie` (`id`, `NUMLICENCE`, `NOM`, `PRENOM`, `ADRESSE1`, `ADRESSE2`, `CP`, `VILLE`, `TEL`, `MAIL`, `club_id`, `qualite_id`, `date_adhesion`) VALUES
 (46, 16440601419, 'Schmitt', 'Arthur', '6751 Quam Rue', 'CP 816, 2767 Ultricies Rd.', '47610 ', 'Montrose', '07 94 06 79 15', 'tellus.Aenean.egestas@neceuismodin.net', 19, 16, '1976-07-25'),
 (47, 16120726650, 'Robin', 'Lisa', '295-7769 Aenean Avenue', '4540 Libero. Chemin', '25464 ', 'Durg', '06 32 48 88 70', 'mauris.sapien.cursus@ornare.ca', 12, 11, '2001-05-09'),
 (48, 16190123227, 'Blanchard', 'Charlotte', '6541 Vestibulum Avenue', '254-2353 Morbi Av.', '92859 ', 'Halle', '09 98 67 01 40', 'amet.faucibus@consectetuermauris.net', 6, 16, '1993-02-27'),
@@ -365,8 +362,7 @@ INSERT INTO `licencie` (`id`, `NUMLICENCE`, `NOM`, `PRENOM`, `ADRESSE1`, `ADRESS
 (263, 16450607539, 'Le roux', 'Margot', '9636 Sed, Ave', '6270 A Route', '62048 ', 'San Donato di Ninea', '09 47 85 49 80', 'ut@vitaediamProin.edu', 12, 17, '1979-03-31'),
 (264, 16570624373, 'Dupuy', 'Pierre', '111 Penatibus Av.', 'CP 708, 2665 Vitae Ave', '82423 ', 'Bida', '06 73 11 28 17', 'commodo.ipsum.Suspendisse@mauris.co.uk', 10, 23, '1980-09-29'),
 (265, 16760621300, 'Roche', 'Chaïma', 'CP 904, 849 Molestie Chemin', '281-7348 Faucibus Rue', '53150 ', 'Pochep', '09 29 05 00 62', 'nibh.Quisque.nonummy@sapien.net', 20, 12, '2002-03-02'),
-(266, 16960103342, 'Mallet', 'Catherine', '991-3637 Augue Chemin', 'Appartement 163-9196 Tempus Rd.', '70643 ', 'Ripacandida', '06 49 00 17 29', 'Lorem.ipsum@enim.edu', 6, 14, '2004-09-11');
-INSERT INTO `licencie` (`id`, `NUMLICENCE`, `NOM`, `PRENOM`, `ADRESSE1`, `ADRESSE2`, `CP`, `VILLE`, `TEL`, `MAIL`, `IDCLUB`, `IDQUALITE`, `DATEADHESION`) VALUES
+(266, 16960103342, 'Mallet', 'Catherine', '991-3637 Augue Chemin', 'Appartement 163-9196 Tempus Rd.', '70643 ', 'Ripacandida', '06 49 00 17 29', 'Lorem.ipsum@enim.edu', 6, 14, '2004-09-11'),
 (267, 16421104982, 'Masson', 'Antonin', 'CP 400, 4147 Ut Rd.', '149-4970 Mauris Avenue', '77550 ', 'Navidad', '09 24 74 99 09', 'magna@dis.net', 8, 8, '1977-10-22'),
 (268, 16950204890, 'Royer', 'Adrian', '5601 Facilisis Impasse', '660-4029 Sed Av.', '13976 ', 'Farrukhabad-cum-Fatehgarh', '02 19 78 21 95', 'commodo.ipsum@montesnascetur.net', 13, 10, '1977-06-05'),
 (269, 16241002344, 'Masson', 'Kilian', '347-9190 Urna. Chemin', 'Appartement 554-5428 Semper Avenue', '99170 ', 'Cirencester', '01 02 52 28 30', 'Donec.porttitor@mattisvelitjusto.ca', 7, 19, '2004-08-27'),
@@ -408,41 +404,11 @@ INSERT INTO `licencie` (`id`, `NUMLICENCE`, `NOM`, `PRENOM`, `ADRESSE1`, `ADRESS
 -- Table structure for table `qualite`
 --
 
-DROP TABLE IF EXISTS `qualite`;
-CREATE TABLE IF NOT EXISTS `qualite` (
-  `id` int(2) NOT NULL,
-  `LIBELLEQUALITE` varchar(50) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `qualite`
 --
 
-INSERT INTO `qualite` (`id`, `LIBELLEQUALITE`) VALUES
-(1, 'Licencie'),
-(2, 'Président de ligue'),
-(3, 'Président de club'),
-(4, 'Président de CD'),
-(5, 'Vice-Président de ligue'),
-(6, 'Vice-Président de club'),
-(7, 'Vice-Président de CD'),
-(8, 'secrétaire de ligue'),
-(9, 'secrétaire de club'),
-(10, 'secrétaire de CD'),
-(11, 'Trésorier de ligue'),
-(12, 'Trésorier de club'),
-(13, 'Trésorier de CD'),
-(14, 'Maitre d\'armes'),
-(15, 'Eleve Maitre'),
-(16, 'Cadre Technique Régional'),
-(17, 'Relais'),
-(18, 'Coordinateur de Pôle'),
-(19, 'Athlète de Haut Niveau'),
-(20, 'TBenevole de Club'),
-(21, 'Animateur'),
-(22, 'FFE'),
-(23, 'Trésorier de CD');
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -289,32 +289,11 @@
     <service id="kernel" class="App\Kernel" public="true" synthetic="true">
       <tag name="routing.route_loader"/>
     </service>
-    <service id="App\Controller\BasilController" class="App\Controller\BasilController" public="true" autowire="true" autoconfigure="true">
-      <tag name="controller.service_arguments"/>
-      <tag name="container.service_subscriber"/>
-      <call method="setContainer">
-        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\BasilController"/>
-      </call>
-    </service>
     <service id="App\Controller\MainController" class="App\Controller\MainController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
       <call method="setContainer">
         <argument type="service" id=".service_locator.vdmMuyE.App\Controller\MainController"/>
-      </call>
-    </service>
-    <service id="App\Controller\ThomasController" class="App\Controller\ThomasController" public="true" autowire="true" autoconfigure="true">
-      <tag name="controller.service_arguments"/>
-      <tag name="container.service_subscriber"/>
-      <call method="setContainer">
-        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\ThomasController"/>
-      </call>
-    </service>
-    <service id="App\Controller\VincentController" class="App\Controller\VincentController" public="true" autowire="true" autoconfigure="true">
-      <tag name="controller.service_arguments"/>
-      <tag name="container.service_subscriber"/>
-      <call method="setContainer">
-        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\VincentController"/>
       </call>
     </service>
     <service id="App\Repository\AtelierRepository" class="App\Repository\AtelierRepository" autowire="true" autoconfigure="true">
@@ -2925,18 +2904,9 @@
       <argument type="service" id="doctrine_migrations.migrations_flattener"/>
     </service>
     <service id="doctrine.migrations.storage.table_storage" class="Doctrine\Migrations\Metadata\Storage\TableMetadataStorageConfiguration"/>
-    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\BasilController" class="App\Controller\BasilController" autowire="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\BasilController" class="App\Controller\BasilController" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Controller\BasilController" class="App\Controller\BasilController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\MainController" class="App\Controller\MainController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\MainController" class="App\Controller\MainController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\MainController" class="App\Controller\MainController" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ThomasController" class="App\Controller\ThomasController" autowire="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ThomasController" class="App\Controller\ThomasController" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Controller\ThomasController" class="App\Controller\ThomasController" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\VincentController" class="App\Controller\VincentController" autowire="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\VincentController" class="App\Controller\VincentController" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Controller\VincentController" class="App\Controller\VincentController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\AtelierRepository" class="App\Repository\AtelierRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\AtelierRepository" class="App\Repository\AtelierRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CategorieChambreRepository" class="App\Repository\CategorieChambreRepository" autowire="true" abstract="true"/>
@@ -3437,27 +3407,9 @@
         <argument key="twig" type="service_closure" id="twig" on-invalid="ignore"/>
       </argument>
     </service>
-    <service id=".service_locator.vdmMuyE.App\Controller\BasilController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-      <tag name="container.service_locator_context" id="App\Controller\BasilController"/>
-      <argument>App\Controller\BasilController</argument>
-      <argument type="service" id="service_container"/>
-      <factory service=".service_locator.vdmMuyE" method="withContext"/>
-    </service>
     <service id=".service_locator.vdmMuyE.App\Controller\MainController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator_context" id="App\Controller\MainController"/>
       <argument>App\Controller\MainController</argument>
-      <argument type="service" id="service_container"/>
-      <factory service=".service_locator.vdmMuyE" method="withContext"/>
-    </service>
-    <service id=".service_locator.vdmMuyE.App\Controller\ThomasController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-      <tag name="container.service_locator_context" id="App\Controller\ThomasController"/>
-      <argument>App\Controller\ThomasController</argument>
-      <argument type="service" id="service_container"/>
-      <factory service=".service_locator.vdmMuyE" method="withContext"/>
-    </service>
-    <service id=".service_locator.vdmMuyE.App\Controller\VincentController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-      <tag name="container.service_locator_context" id="App\Controller\VincentController"/>
-      <argument>App\Controller\VincentController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.vdmMuyE" method="withContext"/>
     </service>

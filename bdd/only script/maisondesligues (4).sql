@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 25, 2022 at 09:37 AM
+-- Generation Time: Apr 29, 2022 at 02:27 PM
 -- Server version: 5.7.31
 -- PHP Version: 7.4.9
 
@@ -33,7 +33,19 @@ CREATE TABLE IF NOT EXISTS `atelier` (
   `libelle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nb_place_maxi` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `atelier`
+--
+
+INSERT INTO `atelier` (`id`, `libelle`, `nb_place_maxi`) VALUES
+(1, 'Le club et son projet', 500),
+(2, 'Le fonctionnement du club', 400),
+(3, 'Les outils à disposition et remis aux clubs', 350),
+(4, 'Observatoire des métiers de l\'escrime', 400),
+(5, 'I.F.F.E', 500),
+(6, 'Développement durable', 600);
 
 -- --------------------------------------------------------
 
@@ -624,7 +636,45 @@ CREATE TABLE IF NOT EXISTS `theme` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `libelle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `theme`
+--
+
+INSERT INTO `theme` (`id`, `libelle`) VALUES
+(1, 'Diagnostic et identification des critères du club'),
+(2, 'Analyse  systémique de l\'environement et méthodologie de mise en oeuvre du projet'),
+(3, 'Actions solidaires et innovantes'),
+(4, 'Financements'),
+(5, 'Outils et documentation'),
+(6, 'Valoriser et communiquer sur le projet'),
+(7, 'Création - Obligation légales'),
+(8, 'Gestion du personnel, de la structure et des conflits'),
+(9, 'Relations internes, externes et avec le comité départementale, la ligue et la férération'),
+(10, 'Conventions'),
+(11, 'Partenariats'),
+(12, 'Logiciel FFE de gestion des compétitions (présesentation et formation)'),
+(13, 'Présentation du document << l\'arbitrage en images >>'),
+(14, 'Plaquette << Guide projet du club >>'),
+(15, 'Labellisation du club'),
+(16, 'Aménagement des équipements'),
+(17, 'Assurances'),
+(18, 'Observations et analyse sur l\'encadrement actuel'),
+(19, 'Propositions de nouveaux schémas d\'organisation'),
+(20, 'Profils types et pratiques innovantes'),
+(21, 'Critères et seuils nécéssaires à la pérénité de l\'emploi'),
+(22, 'Exercice du métier d\'enseignant (Avantages et inconvénients'),
+(23, 'Présentation'),
+(24, 'Fonctionnement'),
+(25, 'Objectifs'),
+(26, 'Nouveaux diplômes'),
+(27, 'Financements'),
+(28, 'Les enjeux climatiques, énergétiques et économiques'),
+(29, 'Les enjeux climatiques, énergétiques et économiques'),
+(30, 'Sport et développement durable'),
+(31, 'Démarche fédérale'),
+(32, 'Echange');
 
 -- --------------------------------------------------------
 
@@ -640,6 +690,43 @@ CREATE TABLE IF NOT EXISTS `theme_atelier` (
   KEY `IDX_B8D81D0059027487` (`theme_id`),
   KEY `IDX_B8D81D0082E2CF35` (`atelier_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `theme_atelier`
+--
+
+INSERT INTO `theme_atelier` (`theme_id`, `atelier_id`) VALUES
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 1),
+(5, 1),
+(6, 1),
+(7, 2),
+(8, 2),
+(9, 2),
+(10, 2),
+(11, 2),
+(12, 3),
+(13, 3),
+(14, 3),
+(15, 3),
+(16, 3),
+(17, 3),
+(18, 4),
+(19, 4),
+(20, 4),
+(21, 4),
+(22, 4),
+(23, 5),
+(24, 5),
+(25, 5),
+(26, 5),
+(27, 5),
+(28, 6),
+(29, 6),
+(30, 6),
+(31, 6);
 
 -- --------------------------------------------------------
 

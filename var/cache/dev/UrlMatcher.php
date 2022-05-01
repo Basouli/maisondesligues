@@ -15,6 +15,10 @@ return [
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
         '/inscription_atelier/inscription' => [[['_route' => 'app_inscription_atelier_inscription', '_controller' => 'App\\Controller\\AtelierController::inscription'], null, null, null, false, false, null]],
         '/inscription_atelier/inscription_submit' => [[['_route' => 'app_inscription_atelier_inscription_submit', '_controller' => 'App\\Controller\\AtelierController::inscriptionSubmit'], null, null, null, false, false, null]],
+        '/inscription_atelier/inscription_modify' => [[['_route' => 'app_inscription_atelier_inscription_modify', '_controller' => 'App\\Controller\\AtelierController::inscriptionModify'], null, null, null, false, false, null]],
+        '/inscription_atelier/inscription_list' => [[['_route' => 'app_inscription_atelier_inscription_list', '_controller' => 'App\\Controller\\AtelierController::inscriptionList'], null, null, null, false, false, null]],
+        '/inscription_atelier/creer_atelier' => [[['_route' => 'app_inscription_atelier_creer_atelier', '_controller' => 'App\\Controller\\AtelierController::creerAtelier'], null, null, null, false, false, null]],
+        '/inscription_atelier/creer_vacation' => [[['_route' => 'app_inscription_atelier_creer_vacation', '_controller' => 'App\\Controller\\AtelierController::creerVacation'], null, null, null, false, false, null]],
         '/' => [[['_route' => 'app_main', '_controller' => 'App\\Controller\\MainController::index'], null, null, null, false, false, null]],
     ],
     [ // $regexpList

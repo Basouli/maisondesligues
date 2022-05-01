@@ -15,5 +15,11 @@ return [
     '_profiler_router' => [['token'], ['_controller' => 'web_profiler.controller.router::panelAction'], [], [['text', '/router'], ['variable', '/', '[^/]++', 'token'], ['text', '/_profiler']], [], []],
     '_profiler_exception' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::body'], [], [['text', '/exception'], ['variable', '/', '[^/]++', 'token'], ['text', '/_profiler']], [], []],
     '_profiler_exception_css' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::stylesheet'], [], [['text', '/exception.css'], ['variable', '/', '[^/]++', 'token'], ['text', '/_profiler']], [], []],
+    'app_inscription_atelier_inscription' => [[], ['_controller' => 'App\\Controller\\AtelierController::inscription'], [], [['text', '/inscription_atelier/inscription']], [], []],
+    'app_inscription_atelier_inscription_submit' => [[], ['_controller' => 'App\\Controller\\AtelierController::inscriptionSubmit'], [], [['text', '/inscription_atelier/inscription_submit']], [], []],
+    'app_inscription_atelier_inscription_modify' => [[], ['_controller' => 'App\\Controller\\AtelierController::inscriptionModify'], [], [['text', '/inscription_atelier/inscription_modify']], [], []],
+    'app_inscription_atelier_inscription_list' => [[], ['_controller' => 'App\\Controller\\AtelierController::inscriptionList'], [], [['text', '/inscription_atelier/inscription_list']], [], []],
+    'app_inscription_atelier_creer_atelier' => [[], ['_controller' => 'App\\Controller\\AtelierController::creerAtelier'], [], [['text', '/inscription_atelier/creer_atelier']], [], []],
+    'app_inscription_atelier_creer_vacation' => [[], ['_controller' => 'App\\Controller\\AtelierController::creerVacation'], [], [['text', '/inscription_atelier/creer_vacation']], [], []],
     'app_main' => [[], ['_controller' => 'App\\Controller\\MainController::index'], [], [['text', '/']], [], []],
 ];

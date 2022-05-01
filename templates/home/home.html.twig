@@ -1,7 +1,50 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="example-wrapper">
-        <p><h1> HOME </h1></p>
-    </div>
-{% endblock %}
+
+
+	{% for atelier in ateliers %}
+		<article>
+			<h2>
+				{{ atelier.libelle }}.
+				{% for vacation in atelier.vacations %}
+					<h6>
+						Date de début de l'atelier :
+						{{vacation.dateheureDebut|date('d-m-Y H:i')}}
+					</h6>
+					<h6>
+						Date de fin de l'atelier :
+						{{vacation.dateheureFin|date('d-m-Y H:i')}}
+					</h6>
+				{% endfor %}
+				<br>
+				{% for theme in atelier.themes %}
+					<ul class="list-group">
+						<li class="list-group-item d-flex justify-content-between align-items-center">
+							{{theme.libelle}}
+						</li>
+					</ul>
+
+
+				{% endfor %}
+			</h2>
+		{% endfor %}
+
+
+		{% for hotel in hotels %}
+			<h1>
+				{{ hotel.nom}}
+			</h1>
+			{% for tarifs in hotel.tarifs %}
+
+				{% for categorie in tarifs.categorie %}
+					{{ categorie.libelleCategorie }}
+
+				{% endfor %}
+			{% endfor %}
+
+
+		{% endfor %}
+
+
+	{% endblock %}

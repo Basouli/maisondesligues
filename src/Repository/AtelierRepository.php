@@ -21,6 +21,7 @@ class AtelierRepository extends ServiceEntityRepository
         parent::__construct($registry, Atelier::class);
     }
 
+
     /**
      * @throws ORMException
      * @throws OptimisticLockException

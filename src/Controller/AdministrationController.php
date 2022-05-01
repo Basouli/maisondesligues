@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+//use App\Repository\NavireRepository;
 
 /**
 * @Route("admin/", name="_admin")
@@ -14,12 +15,15 @@ class AdministrationController extends AbstractController
 {
     /**
      * Permet de consulter les inscriptions
-     * @Route("inscription_list", name="_inscription_list")
+     * @Route("voirInscriptions", name="_creer")
      */
-    public function inscriptionList(): Response
+    public function inscriptionList(/*NavireRepository $repo*/): Response
     {
-        return $this->render('inscription_atelier/index.html.twig', [
+        //$ateliers = $repo->findAll();
+        
+        return $this->render('inscription_atelier/voirtous.html.twig', [
             'controller_name' => 'InscriptionAtelierController',
+            //'ateliers' => $ateliers,
         ]);
     }
     

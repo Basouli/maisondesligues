@@ -325,18 +325,18 @@
         <argument type="service" id=".service_locator.vdmMuyE.App\Controller\AdministrationController"/>
       </call>
     </service>
-    <service id="App\Controller\AtelierController" class="App\Controller\AtelierController" public="true" autowire="true" autoconfigure="true">
-      <tag name="controller.service_arguments"/>
-      <tag name="container.service_subscriber"/>
-      <call method="setContainer">
-        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\AtelierController"/>
-      </call>
-    </service>
     <service id="App\Controller\CompteController" class="App\Controller\CompteController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
       <call method="setContainer">
         <argument type="service" id=".service_locator.vdmMuyE.App\Controller\CompteController"/>
+      </call>
+    </service>
+    <service id="App\Controller\LicencieController" class="App\Controller\LicencieController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\LicencieController"/>
       </call>
     </service>
     <service id="App\Controller\MainController" class="App\Controller\MainController" public="true" autowire="true" autoconfigure="true">
@@ -3781,12 +3781,12 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AdministrationController" class="App\Controller\AdministrationController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AdministrationController" class="App\Controller\AdministrationController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\AdministrationController" class="App\Controller\AdministrationController" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AtelierController" class="App\Controller\AtelierController" autowire="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AtelierController" class="App\Controller\AtelierController" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Controller\AtelierController" class="App\Controller\AtelierController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\CompteController" class="App\Controller\CompteController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\CompteController" class="App\Controller\CompteController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\CompteController" class="App\Controller\CompteController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\LicencieController" class="App\Controller\LicencieController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\LicencieController" class="App\Controller\LicencieController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\LicencieController" class="App\Controller\LicencieController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\MainController" class="App\Controller\MainController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\MainController" class="App\Controller\MainController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\MainController" class="App\Controller\MainController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -4344,15 +4344,15 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.vdmMuyE" method="withContext"/>
     </service>
-    <service id=".service_locator.vdmMuyE.App\Controller\AtelierController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-      <tag name="container.service_locator_context" id="App\Controller\AtelierController"/>
-      <argument>App\Controller\AtelierController</argument>
-      <argument type="service" id="service_container"/>
-      <factory service=".service_locator.vdmMuyE" method="withContext"/>
-    </service>
     <service id=".service_locator.vdmMuyE.App\Controller\CompteController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator_context" id="App\Controller\CompteController"/>
       <argument>App\Controller\CompteController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.vdmMuyE" method="withContext"/>
+    </service>
+    <service id=".service_locator.vdmMuyE.App\Controller\LicencieController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\LicencieController"/>
+      <argument>App\Controller\LicencieController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.vdmMuyE" method="withContext"/>
     </service>

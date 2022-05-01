@@ -13,7 +13,7 @@ class MainController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('base.html.twig', [
+        return $this->render('home/home.html.twig', [
             'controller_name' => 'MainController',
         ]);
     }

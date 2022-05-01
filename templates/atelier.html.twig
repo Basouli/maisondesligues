@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2 class="container">
+        {% block title %}Tout les Ateliers{% endblock %}
+    </h2>
+    
+    <div class="container p-8">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col" style="width:100px">ID</th>
+                    <th scope="col">IMO</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">MMSI</th>
+                    <th scope="col">indicatif appel</th>
+                    <th scope="col">eta</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                {% for navire in navires %}
+                    <tr class="table-primary">
+                        <td>{{ navire.id }}</td>
+                        <td>{{ navire.imo }}</td>
+                        <td>{{ navire.nom }}</td>
+                        <td>{{ navire.mmsi }}</td>
+                        <td>{{ navire.indicatifAppel }}</td>
+                        <td>{{ navire.eta|date('Y-m-d H:i:sP') }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

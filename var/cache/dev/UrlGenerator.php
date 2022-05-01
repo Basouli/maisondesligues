@@ -15,6 +15,7 @@ return [
     '_profiler_router' => [['token'], ['_controller' => 'web_profiler.controller.router::panelAction'], [], [['text', '/router'], ['variable', '/', '[^/]++', 'token'], ['text', '/_profiler']], [], []],
     '_profiler_exception' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::body'], [], [['text', '/exception'], ['variable', '/', '[^/]++', 'token'], ['text', '/_profiler']], [], []],
     '_profiler_exception_css' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::stylesheet'], [], [['text', '/exception.css'], ['variable', '/', '[^/]++', 'token'], ['text', '/_profiler']], [], []],
-    'app_inscription_atelier_form' => [[], ['_controller' => 'App\\Controller\\InscriptionAtelierController::form'], [], [['text', '/inscription_atelier/form']], [], []],
+    'app_inscription_atelier_inscription' => [[], ['_controller' => 'App\\Controller\\AtelierController::inscription'], [], [['text', '/inscription_atelier/inscription']], [], []],
+    'app_inscription_atelier_inscription_submit' => [[], ['_controller' => 'App\\Controller\\AtelierController::inscriptionSubmit'], [], [['text', '/inscription_atelier/inscription_submit']], [], []],
     'app_main' => [[], ['_controller' => 'App\\Controller\\MainController::index'], [], [['text', '/']], [], []],
 ];

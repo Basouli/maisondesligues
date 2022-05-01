@@ -318,11 +318,11 @@
     <service id="kernel" class="App\Kernel" public="true" synthetic="true">
       <tag name="routing.route_loader"/>
     </service>
-    <service id="App\Controller\InscriptionAtelierController" class="App\Controller\InscriptionAtelierController" public="true" autowire="true" autoconfigure="true">
+    <service id="App\Controller\AtelierController" class="App\Controller\AtelierController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
       <call method="setContainer">
-        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\InscriptionAtelierController"/>
+        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\AtelierController"/>
       </call>
     </service>
     <service id="App\Controller\MainController" class="App\Controller\MainController" public="true" autowire="true" autoconfigure="true">
@@ -3764,9 +3764,9 @@
         <argument>security:encode-password</argument>
       </call>
     </service>
-    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\InscriptionAtelierController" class="App\Controller\InscriptionAtelierController" autowire="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\InscriptionAtelierController" class="App\Controller\InscriptionAtelierController" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Controller\InscriptionAtelierController" class="App\Controller\InscriptionAtelierController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AtelierController" class="App\Controller\AtelierController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AtelierController" class="App\Controller\AtelierController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\AtelierController" class="App\Controller\AtelierController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\MainController" class="App\Controller\MainController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\MainController" class="App\Controller\MainController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\MainController" class="App\Controller\MainController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -4318,9 +4318,9 @@
         <argument key="twig" type="service_closure" id="twig" on-invalid="ignore"/>
       </argument>
     </service>
-    <service id=".service_locator.vdmMuyE.App\Controller\InscriptionAtelierController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-      <tag name="container.service_locator_context" id="App\Controller\InscriptionAtelierController"/>
-      <argument>App\Controller\InscriptionAtelierController</argument>
+    <service id=".service_locator.vdmMuyE.App\Controller\AtelierController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\AtelierController"/>
+      <argument>App\Controller\AtelierController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.vdmMuyE" method="withContext"/>
     </service>

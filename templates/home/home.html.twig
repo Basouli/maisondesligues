@@ -6,12 +6,13 @@
 	{% for atelier in ateliers %}
 		<article>
 			<h2>
-				{{ atelier.libelle }}.
+				{{ atelier.libelle }}
 				{% for vacation in atelier.vacations %}
 					<h6>
 						Date de début de l'atelier :
 						{{vacation.dateheureDebut|date('d-m-Y H:i')}}
 					</h6>
+
 					<h6>
 						Date de fin de l'atelier :
 						{{vacation.dateheureFin|date('d-m-Y H:i')}}
@@ -36,14 +37,18 @@
 				{{ hotel.nom}}
 			</h1>
 			{% for tarifs in hotel.tarifs %}
+				{{ tarifs.categorie.libelleCategorie }}
+				:
+				{% if tarifs.categorie.libelleCategorie == 'Supplément repas' %}
+					{{ tarifs.tarifNuite }}
+					€
+				{% else %}
+					{{ tarifs.tarifNuite }}
+					€ / nuit
+				{% endif %}
+				<br>
 
-				{% for categorie in tarifs.categorie %}
-					{{ categorie.libelleCategorie }}
-
-				{% endfor %}
 			{% endfor %}
-
-
 		{% endfor %}
 
 

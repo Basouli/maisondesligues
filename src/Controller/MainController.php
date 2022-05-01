@@ -17,4 +17,15 @@ class MainController extends AbstractController
             'controller_name' => 'MainController',
         ]);
     }
+    
+    /*
+     * Route("/oper/test", name="_test")
+     * IsGranted("ROLE_OPER")
+     */
+    public function test(): Response
+    {
+        return $this->render('base.html.twig', [
+            'controller_name' => 'MainController',
+        ]);
+    }
 }

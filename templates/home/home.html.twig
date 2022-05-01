@@ -37,17 +37,21 @@
 				{{ hotel.nom}}
 			</h1>
 			{% for tarifs in hotel.tarifs %}
-				{{ tarifs.categorie.libelleCategorie }}
-				:
-				{% if tarifs.categorie.libelleCategorie == 'Supplément repas' %}
-					{{ tarifs.tarifNuite }}
-					€
-				{% else %}
-					{{ tarifs.tarifNuite }}
-					€ / nuit
-				{% endif %}
-				<br>
+				<ul class="list-group">
+					<li class="list-group-item d-flex justify-content-between align-items-center">
+						{{ tarifs.categorie.libelleCategorie }}
+						:
+						{% if tarifs.categorie.libelleCategorie == 'Supplément repas' %}
+							{{ tarifs.tarifNuite }}
+							€
+						{% else %}
+							{{ tarifs.tarifNuite }}
+							€ / nuit
 
+						{% endif %}
+						<br>
+					</li>
+				</ul>
 			{% endfor %}
 		{% endfor %}
 

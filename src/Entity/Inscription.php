@@ -25,10 +25,10 @@ class Inscription
     private $dateInscription;
 
     /**
-     * @ORM\OneToOne(targetEntity=Compte::class, cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=User::class, cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
-    private $compte;
+    private $user;
 
     /**
      * @ORM\ManyToMany(targetEntity=Atelier::class, mappedBy="inscriptions")

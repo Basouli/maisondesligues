@@ -25,4 +25,5 @@ class AtelierType extends AbstractType
             'data_class' => Atelier::class,
         ]);
     }
+    
 }

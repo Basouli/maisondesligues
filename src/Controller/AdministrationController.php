@@ -4,9 +4,12 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use App\Entity\Atelier;
+use App\Form\AtelierType;
 
 /**
 * @Route("admin/", name="_admin")
@@ -47,8 +50,22 @@ class AdministrationController extends AbstractController
     /**
      * @Route("creerAtelier", name="_creer_Atelier")
      */
-    public function creerAtelier(): Response
+    public function creerAtelier(Request $request, \Doctrine\ORM\EntityManagerInterface $manager): Response
     {
+        $atelier = new Atelier();
+        $atelier->setNbPlaceMaxi(500);
+
+        $form = $this->createForm(AtelierType::class, $atelier);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+
+            $atelier = $form->getLibelle();
+            $manager->persist($atelier);
+            $manager->flush();
+            $this->addFlash('notification', "L'atelier a bien été enregistré");
+        }
+        
         return $this->render('administration/creationAtelier.html.twig', [
             'controller_name' => 'InscriptionAtelierController',
         ]);

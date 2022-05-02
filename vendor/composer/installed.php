@@ -5,7 +5,11 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
+<<<<<<< HEAD
         'reference' => '0db17325926a0dd8be7fbcd6e744826169ee0e6b',
+=======
+        'reference' => 'ccf672cdbac6e7a753dde62f766d93be8f329393',
+>>>>>>> basil
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +20,11 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
+<<<<<<< HEAD
             'reference' => '0db17325926a0dd8be7fbcd6e744826169ee0e6b',
+=======
+            'reference' => 'ccf672cdbac6e7a753dde62f766d93be8f329393',
+>>>>>>> basil
             'dev_requirement' => false,
         ),
         'doctrine/annotations' => array(
@@ -164,12 +172,12 @@
             'dev_requirement' => false,
         ),
         'friendsofphp/proxy-manager-lts' => array(
-            'pretty_version' => 'v1.0.8',
-            'version' => '1.0.8.0',
+            'pretty_version' => 'v1.0.10',
+            'version' => '1.0.10.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../friendsofphp/proxy-manager-lts',
             'aliases' => array(),
-            'reference' => '581ab35f83ce2135057e0afae892fbf1c583bfb9',
+            'reference' => '88dda72c48633326c81a01b861c8b6a923948f56',
             'dev_requirement' => false,
         ),
         'laminas/laminas-code' => array(
@@ -285,6 +293,15 @@
             'install_path' => __DIR__ . '/../symfony/apache-pack',
             'aliases' => array(),
             'reference' => '3aa5818d73ad2551281fc58a75afd9ca82622e6c',
+            'dev_requirement' => false,
+        ),
+        'symfony/asset' => array(
+            'pretty_version' => 'v4.4.40',
+            'version' => '4.4.40.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/asset',
+            'aliases' => array(),
+            'reference' => '4dee0d02664f2d06005c56b8e43612b7a372e47d',
             'dev_requirement' => false,
         ),
         'symfony/cache' => array(
@@ -479,6 +496,15 @@
             'reference' => '7f8ce5bffc3939c63b7da32de5a546c98eb67698',
             'dev_requirement' => false,
         ),
+        'symfony/inflector' => array(
+            'pretty_version' => 'v4.4.37',
+            'version' => '4.4.37.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/inflector',
+            'aliases' => array(),
+            'reference' => 'e5e4c618a40e562d51757b54305bd113df59c29f',
+            'dev_requirement' => false,
+        ),
         'symfony/maker-bundle' => array(
             'pretty_version' => 'v1.39.0',
             'version' => '1.39.0.0',
@@ -617,6 +643,15 @@
             'reference' => '9eedd60225506d56e42210a70c21bb80ca8456ce',
             'dev_requirement' => true,
         ),
+        'symfony/property-access' => array(
+            'pretty_version' => 'v4.4.41',
+            'version' => '4.4.41.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/property-access',
+            'aliases' => array(),
+            'reference' => '363945473bc6ec784e75037b075cb98f85cdae36',
+            'dev_requirement' => false,
+        ),
         'symfony/proxy-manager-bridge' => array(
             'pretty_version' => 'v4.4.39',
             'version' => '4.4.39.0',
@@ -633,6 +668,51 @@
             'install_path' => __DIR__ . '/../symfony/routing',
             'aliases' => array(),
             'reference' => 'c25e38d403c00d5ddcfc514f016f1b534abdf052',
+            'dev_requirement' => false,
+        ),
+        'symfony/security-bundle' => array(
+            'pretty_version' => 'v4.4.41',
+            'version' => '4.4.41.0',
+            'type' => 'symfony-bundle',
+            'install_path' => __DIR__ . '/../symfony/security-bundle',
+            'aliases' => array(),
+            'reference' => '6549321a5abecccb311a697b6cb508a3c325ed18',
+            'dev_requirement' => false,
+        ),
+        'symfony/security-core' => array(
+            'pretty_version' => 'v4.4.41',
+            'version' => '4.4.41.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/security-core',
+            'aliases' => array(),
+            'reference' => '254b083d923592383f42c45611d235b04e27749d',
+            'dev_requirement' => false,
+        ),
+        'symfony/security-csrf' => array(
+            'pretty_version' => 'v4.4.37',
+            'version' => '4.4.37.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/security-csrf',
+            'aliases' => array(),
+            'reference' => '45c956ef58135091f53732646a0acd28034f02c0',
+            'dev_requirement' => false,
+        ),
+        'symfony/security-guard' => array(
+            'pretty_version' => 'v4.4.37',
+            'version' => '4.4.37.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/security-guard',
+            'aliases' => array(),
+            'reference' => 'cf8922b164e1659726c8852663eaaa593eef668c',
+            'dev_requirement' => false,
+        ),
+        'symfony/security-http' => array(
+            'pretty_version' => 'v4.4.41',
+            'version' => '4.4.41.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/security-http',
+            'aliases' => array(),
+            'reference' => '36736d8d5fcb1ff0f74e569f6a4bc64e8c9c267e',
             'dev_requirement' => false,
         ),
         'symfony/service-contracts' => array(
@@ -684,6 +764,15 @@
             'install_path' => __DIR__ . '/../symfony/twig-bundle',
             'aliases' => array(),
             'reference' => '164c1edc69f2c7ee337323efc78a8a8a263f45ff',
+            'dev_requirement' => false,
+        ),
+        'symfony/validator' => array(
+            'pretty_version' => 'v4.4.41',
+            'version' => '4.4.41.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/validator',
+            'aliases' => array(),
+            'reference' => 'b79a7830b8ead3fb0a2a0080ba6f5b2a0861c28c',
             'dev_requirement' => false,
         ),
         'symfony/var-dumper' => array(

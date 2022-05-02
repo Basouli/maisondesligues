@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Compte;
+use App\Entity\User;
 use App\Form\RegistrationFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,14 +18,14 @@ class RegistrationController extends AbstractController
      */
     public function register(Request $request, UserPasswordEncoderInterface $userPasswordEncoder, EntityManagerInterface $entityManager): Response
     {
-        $user = new Compte();
+        $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             if ($form->get('plainPassword')->getData() == $form->get('plainPasswordBis')->getData()) {
                 
-                $user = new Compte();
+                $user = new User();
                 
                 // encode the plain password
                 $user->setPassword(

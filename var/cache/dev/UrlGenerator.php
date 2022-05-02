@@ -15,7 +15,6 @@ return [
     '_profiler_router' => [['token'], ['_controller' => 'web_profiler.controller.router::panelAction'], [], [['text', '/router'], ['variable', '/', '[^/]++', 'token'], ['text', '/_profiler']], [], []],
     '_profiler_exception' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::body'], [], [['text', '/exception'], ['variable', '/', '[^/]++', 'token'], ['text', '/_profiler']], [], []],
     '_profiler_exception_css' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::stylesheet'], [], [['text', '/exception.css'], ['variable', '/', '[^/]++', 'token'], ['text', '/_profiler']], [], []],
-    '_admin_inscription_list' => [[], ['_controller' => 'App\\Controller\\AdministrationController::inscriptionList'], [], [['text', '/admin/inscription_list']], [], []],
     '_admin_creer' => [[], ['_controller' => 'App\\Controller\\AdministrationController::creer'], [], [['text', '/admin/creer']], [], []],
     '_admin_creer_submit' => [[], ['_controller' => 'App\\Controller\\AdministrationController::creerSubmit'], [], [['text', '/admin/creer_submit']], [], []],
     '_admin_modifier' => [[], ['_controller' => 'App\\Controller\\AdministrationController::modifier'], [], [['text', '/admin/modifier']], [], []],
@@ -28,4 +27,6 @@ return [
     'app_compte_change_password_submit' => [[], ['_controller' => 'App\\Controller\\CompteController::changePasswordSubmit'], [], [['text', '/compte/change_password_submit']], [], []],
     '_licencie_index' => [[], ['_controller' => 'App\\Controller\\LicencieController::index'], [], [['text', '/licencie/index']], [], []],
     'app_main' => [[], ['_controller' => 'App\\Controller\\MainController::index'], [], [['text', '/']], [], []],
+    'app_login' => [[], ['_controller' => 'App\\Controller\\SecurityController::login'], [], [['text', '/login']], [], []],
+    'app_logout' => [[], ['_controller' => 'App\\Controller\\SecurityController::logout'], [], [['text', '/logout']], [], []],
 ];

@@ -13,7 +13,6 @@ return [
         '/_profiler/search_bar' => [[['_route' => '_profiler_search_bar', '_controller' => 'web_profiler.controller.profiler::searchBarAction'], null, null, null, false, false, null]],
         '/_profiler/phpinfo' => [[['_route' => '_profiler_phpinfo', '_controller' => 'web_profiler.controller.profiler::phpinfoAction'], null, null, null, false, false, null]],
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
-        '/admin/inscription_list' => [[['_route' => '_admin_inscription_list', '_controller' => 'App\\Controller\\AdministrationController::inscriptionList'], null, null, null, false, false, null]],
         '/admin/creer' => [[['_route' => '_admin_creer', '_controller' => 'App\\Controller\\AdministrationController::creer'], null, null, null, false, false, null]],
         '/admin/creer_submit' => [[['_route' => '_admin_creer_submit', '_controller' => 'App\\Controller\\AdministrationController::creerSubmit'], null, null, null, false, false, null]],
         '/admin/modifier' => [[['_route' => '_admin_modifier', '_controller' => 'App\\Controller\\AdministrationController::modifier'], null, null, null, false, false, null]],
@@ -26,6 +25,8 @@ return [
         '/compte/change_password_submit' => [[['_route' => 'app_compte_change_password_submit', '_controller' => 'App\\Controller\\CompteController::changePasswordSubmit'], null, null, null, false, false, null]],
         '/licencie/index' => [[['_route' => '_licencie_index', '_controller' => 'App\\Controller\\LicencieController::index'], null, null, null, false, false, null]],
         '/' => [[['_route' => 'app_main', '_controller' => 'App\\Controller\\MainController::index'], null, null, null, false, false, null]],
+        '/login' => [[['_route' => 'app_login', '_controller' => 'App\\Controller\\SecurityController::login'], null, null, null, false, false, null]],
+        '/logout' => [[['_route' => 'app_logout', '_controller' => 'App\\Controller\\SecurityController::logout'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'

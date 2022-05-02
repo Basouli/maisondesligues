@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container-fluid">
         
         <img class="logo" src="/img/mdl.PNG" height="30px" >
@@ -14,15 +14,20 @@
                 
                 <div id="appNav" class="d-flex flex-row w-100"></div>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Accueil
+                        <a class="nav-link" href="/">Accueil
                         </a>
                     </li>
                     
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Ateliers
+                        <a class="nav-link" href="{{ path('_ateliers') }}">Ateliers
                         </a>
                     </li>
-
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('_hotels') }}">Hébergement
+                        </a>
+                    </li>
+                    
                     <!--
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Ateliers</a>
@@ -34,26 +39,23 @@
                         </div>
                     </li>
                     -->
-                    
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Hébergement
-                        </a>
-                    </li>                    
                 </div>
 
                 <!-- MENU COMPTE _______________________________________________________________________________________________________________ MENU COMPTE -->
                 
                 <div id="accountNav" class="d-flex flex-row">
-                    <a class="nav-link" href="#">Se connecter
+                    <a class="nav-link" href="/login">Se connecter
                     </a>
                     
                     <a class="nav-link" href="#">S'inscrire
                     </a>
 
-                    <!--
-                    <a class="nav-link" href="#">Administrer
-                    </a>
+                    {% if is_granted('ROLE_USER') %}
+                        <a class="nav-link" href="#">Administrer
+                        </a>
+                    {% endif %}
                     
+                    <!--
                     <a class="nav-link" href="#">Se déconnecter
                     </a>
                     -->

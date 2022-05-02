@@ -369,6 +369,10 @@
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
+    <service id="App\Repository\CongresRepository" class="App\Repository\CongresRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
     <service id="App\Repository\HotelRepository" class="App\Repository\HotelRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
@@ -2841,7 +2845,7 @@
       <factory class="Doctrine\ORM\EntityManager" method="create"/>
     </service>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory" public="false">
-      <argument type="service" id=".service_locator.H7pc6Jx"/>
+      <argument type="service" id=".service_locator.cbscVP3"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -3865,6 +3869,8 @@
     <service id=".abstract.instanceof.App\Repository\ClubRepository" class="App\Repository\ClubRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CompteRepository" class="App\Repository\CompteRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\CompteRepository" class="App\Repository\CompteRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CongresRepository" class="App\Repository\CongresRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\CongresRepository" class="App\Repository\CongresRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\HotelRepository" class="App\Repository\HotelRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\HotelRepository" class="App\Repository\HotelRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\InscriptionRepository" class="App\Repository\InscriptionRepository" autowire="true" abstract="true"/>
@@ -4166,16 +4172,30 @@
         <argument>make:migration</argument>
       </call>
     </service>
+    <service id=".service_locator.VdOM98V" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="atelierRepository" type="service_closure" id="App\Repository\AtelierRepository"/>
+        <argument key="categorieChambreRepository" type="service_closure" id="App\Repository\CategorieChambreRepository"/>
+        <argument key="congresRepository" type="service_closure" id="App\Repository\CongresRepository"/>
+        <argument key="hotelRepository" type="service_closure" id="App\Repository\HotelRepository"/>
+        <argument key="proposerRepository" type="service_closure" id="App\Repository\ProposerRepository"/>
+        <argument key="themeRepository" type="service_closure" id="App\Repository\ThemeRepository"/>
+        <argument key="vacationRepository" type="service_closure" id="App\Repository\VacationRepository"/>
+      </argument>
+    </service>
     <service id=".service_locator.g.xob4v" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="authenticationUtils" type="service_closure" id="security.authentication_utils"/>
       </argument>
     </service>
-    <service id=".service_locator.rVMUvVA" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.5WjClAr" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Controller\MainController::index" type="service_closure" id=".service_locator.VdOM98V"/>
         <argument key="App\Controller\SecurityController::login" type="service_closure" id=".service_locator.g.xob4v"/>
+        <argument key="App\Controller\MainController:index" type="service_closure" id=".service_locator.VdOM98V"/>
         <argument key="App\Controller\SecurityController:login" type="service_closure" id=".service_locator.g.xob4v"/>
       </argument>
     </service>
@@ -4366,13 +4386,14 @@
         <argument key="doctrine.orm.default_listeners.attach_entity_listeners" type="service_closure" id="doctrine.orm.default_listeners.attach_entity_listeners"/>
       </argument>
     </service>
-    <service id=".service_locator.H7pc6Jx" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.cbscVP3" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Repository\AtelierRepository" type="service_closure" id="App\Repository\AtelierRepository"/>
         <argument key="App\Repository\CategorieChambreRepository" type="service_closure" id="App\Repository\CategorieChambreRepository"/>
         <argument key="App\Repository\ClubRepository" type="service_closure" id="App\Repository\ClubRepository"/>
         <argument key="App\Repository\CompteRepository" type="service_closure" id="App\Repository\CompteRepository"/>
+        <argument key="App\Repository\CongresRepository" type="service_closure" id="App\Repository\CongresRepository"/>
         <argument key="App\Repository\HotelRepository" type="service_closure" id="App\Repository\HotelRepository"/>
         <argument key="App\Repository\InscriptionRepository" type="service_closure" id="App\Repository\InscriptionRepository"/>
         <argument key="App\Repository\LicencieRepository" type="service_closure" id="App\Repository\LicencieRepository"/>
@@ -4577,12 +4598,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.rVMUvVA"/>
+      <argument type="service" id=".service_locator.5WjClAr"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.rVMUvVA"/>
+      <argument type="service" id=".service_locator.5WjClAr"/>
     </service>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <argument type="service" id=".service_locator.BQKgxhe"/>
@@ -4931,7 +4952,7 @@
     <service id="Symfony\Component\Security\Core\User\UserCheckerInterface" alias="security.user_checker" public="false"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.CmORmuK" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.rVMUvVA"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.5WjClAr"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>

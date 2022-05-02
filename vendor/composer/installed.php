@@ -5,11 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-<<<<<<< HEAD
-        'reference' => '0db17325926a0dd8be7fbcd6e744826169ee0e6b',
-=======
-        'reference' => 'ccf672cdbac6e7a753dde62f766d93be8f329393',
->>>>>>> basil
+	'reference' => 'ccf672cdbac6e7a753dde62f766d93be8f329393',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -20,11 +16,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-<<<<<<< HEAD
-            'reference' => '0db17325926a0dd8be7fbcd6e744826169ee0e6b',
-=======
-            'reference' => 'ccf672cdbac6e7a753dde62f766d93be8f329393',
->>>>>>> basil
+	    'reference' => 'ccf672cdbac6e7a753dde62f766d93be8f329393',
             'dev_requirement' => false,
         ),
         'doctrine/annotations' => array(

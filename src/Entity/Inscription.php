@@ -45,11 +45,17 @@ class Inscription
      */
     private $restaurations;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Congres::class, mappedBy="Inscriptions")
+     */
+    private $congres;
+
     public function __construct()
     {
         $this->ateliers = new ArrayCollection();
         $this->nuites = new ArrayCollection();
         $this->restaurations = new ArrayCollection();
+        $this->congres = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -162,6 +168,36 @@ class Inscription
             // set the owning side to null (unless already changed)
             if ($restauration->getInscription() === $this) {
                 $restauration->setInscription(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Congres>
+     */
+    public function getCongres(): Collection
+    {
+        return $this->congres;
+    }
+
+    public function addCongre(Congres $congre): self
+    {
+        if (!$this->congres->contains($congre)) {
+            $this->congres[] = $congre;
+            $congre->setInscriptions($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCongre(Congres $congre): self
+    {
+        if ($this->congres->removeElement($congre)) {
+            // set the owning side to null (unless already changed)
+            if ($congre->getInscriptions() === $this) {
+                $congre->setInscriptions(null);
             }
         }
 

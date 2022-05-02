@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 30, 2022 at 09:43 PM
+-- Generation Time: May 02, 2022 at 06:56 AM
 -- Server version: 5.7.31
--- PHP Version: 7.3.21
+-- PHP Version: 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -157,6 +157,24 @@ CREATE TABLE IF NOT EXISTS `compte` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `congres`
+--
+
+DROP TABLE IF EXISTS `congres`;
+CREATE TABLE IF NOT EXISTS `congres` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `inscriptions_id` int(11) DEFAULT NULL,
+  `libelle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tarifs_inscription` int(11) NOT NULL,
+  `date_debut` datetime NOT NULL,
+  `date_fin` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_D89031458E2AD382` (`inscriptions_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `doctrine_migration_versions`
 --
 
@@ -173,7 +191,8 @@ CREATE TABLE IF NOT EXISTS `doctrine_migration_versions` (
 --
 
 INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
-('DoctrineMigrations\\Version20220418142109', '2022-04-25 07:35:35', 1027);
+('DoctrineMigrations\\Version20220418142109', '2022-04-25 07:35:35', 1027),
+('DoctrineMigrations\\Version20220502065521', '2022-05-02 06:55:28', 1052);
 
 -- --------------------------------------------------------
 
@@ -514,8 +533,9 @@ INSERT INTO `licencie` (`id`, `club_id`, `qualite_id`, `numlicence`, `nom`, `pre
 (264, 10, 23, 2147483647, 'Dupuy', 'Pierre', '111 Penatibus Av.', 'CP 708, 2665 Vitae Ave', '82423 ', 'Bida', '06 73 11 28 17', 'commodo.ipsum.Suspendisse@mauris.co.uk', '1980-09-29'),
 (265, 20, 12, 2147483647, 'Roche', 'Chaïma', 'CP 904, 849 Molestie Chemin', '281-7348 Faucibus Rue', '53150 ', 'Pochep', '09 29 05 00 62', 'nibh.Quisque.nonummy@sapien.net', '2002-03-02'),
 (266, 6, 14, 2147483647, 'Mallet', 'Catherine', '991-3637 Augue Chemin', 'Appartement 163-9196 Tempus Rd.', '70643 ', 'Ripacandida', '06 49 00 17 29', 'Lorem.ipsum@enim.edu', '2004-09-11'),
-(268, 13, 10, 2147483647, 'Royer', 'Adrian', '5601 Facilisis Impasse', '660-4029 Sed Av.', '13976 ', 'Farrukhabad-cum-Fatehgarh', '02 19 78 21 95', 'commodo.ipsum@montesnascetur.net', '1977-06-05');
+(267, 8, 8, 2147483647, 'Masson', 'Antonin', 'CP 400, 4147 Ut Rd.', '149-4970 Mauris Avenue', '77550 ', 'Navidad', '09 24 74 99 09', 'magna@dis.net', '1977-10-22');
 INSERT INTO `licencie` (`id`, `club_id`, `qualite_id`, `numlicence`, `nom`, `prenom`, `adresse1`, `adresse2`, `cp`, `ville`, `tel`, `mail`, `date_adhesion`) VALUES
+(268, 13, 10, 2147483647, 'Royer', 'Adrian', '5601 Facilisis Impasse', '660-4029 Sed Av.', '13976 ', 'Farrukhabad-cum-Fatehgarh', '02 19 78 21 95', 'commodo.ipsum@montesnascetur.net', '1977-06-05'),
 (269, 7, 19, 2147483647, 'Masson', 'Kilian', '347-9190 Urna. Chemin', 'Appartement 554-5428 Semper Avenue', '99170 ', 'Cirencester', '01 02 52 28 30', 'Donec.porttitor@mattisvelitjusto.ca', '2004-08-27'),
 (270, 15, 6, 2147483647, 'Pons', 'Océane', 'CP 928, 7660 Tincidunt Rd.', 'Appartement 504-5164 Etiam Rue', '64315 ', 'Moere', '07 58 99 95 16', 'massa.lobortis.ultrices@ligulaAeneangravida.co.uk', '1990-10-08'),
 (271, 13, 22, 2147483647, 'Paul', 'Aaron', '402-293 Risus. Rd.', 'Appartement 597-2742 Vel, Av.', '88436 ', 'Champdani', '01 26 78 24 75', 'vulputate.eu@necurna.org', '2021-12-19'),
@@ -802,6 +822,12 @@ ALTER TABLE `compte`
   ADD CONSTRAINT `FK_CFF65260B56DCD74` FOREIGN KEY (`licencie_id`) REFERENCES `licencie` (`id`);
 
 --
+-- Constraints for table `congres`
+--
+ALTER TABLE `congres`
+  ADD CONSTRAINT `FK_D89031458E2AD382` FOREIGN KEY (`inscriptions_id`) REFERENCES `inscription` (`id`);
+
+--
 -- Constraints for table `inscription`
 --
 ALTER TABLE `inscription`
@@ -813,6 +839,40 @@ ALTER TABLE `inscription`
 ALTER TABLE `licencie`
   ADD CONSTRAINT `FK_3B75561261190A32` FOREIGN KEY (`club_id`) REFERENCES `club` (`id`),
   ADD CONSTRAINT `FK_3B755612A6338570` FOREIGN KEY (`qualite_id`) REFERENCES `qualite` (`id`);
+
+--
+-- Constraints for table `nuite`
+--
+ALTER TABLE `nuite`
+  ADD CONSTRAINT `FK_8D4CB7153243BB18` FOREIGN KEY (`hotel_id`) REFERENCES `hotel` (`id`),
+  ADD CONSTRAINT `FK_8D4CB7155DAC5993` FOREIGN KEY (`inscription_id`) REFERENCES `inscription` (`id`),
+  ADD CONSTRAINT `FK_8D4CB7155DEB5F8` FOREIGN KEY (`categorie_chambre_id`) REFERENCES `categorie_chambre` (`id`);
+
+--
+-- Constraints for table `proposer`
+--
+ALTER TABLE `proposer`
+  ADD CONSTRAINT `FK_21866C153243BB18` FOREIGN KEY (`hotel_id`) REFERENCES `hotel` (`id`),
+  ADD CONSTRAINT `FK_21866C15BCF5E72D` FOREIGN KEY (`categorie_id`) REFERENCES `categorie_chambre` (`id`);
+
+--
+-- Constraints for table `restauration`
+--
+ALTER TABLE `restauration`
+  ADD CONSTRAINT `FK_898B1EF15DAC5993` FOREIGN KEY (`inscription_id`) REFERENCES `inscription` (`id`);
+
+--
+-- Constraints for table `theme_atelier`
+--
+ALTER TABLE `theme_atelier`
+  ADD CONSTRAINT `FK_B8D81D0059027487` FOREIGN KEY (`theme_id`) REFERENCES `theme` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_B8D81D0082E2CF35` FOREIGN KEY (`atelier_id`) REFERENCES `atelier` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `vacation`
+--
+ALTER TABLE `vacation`
+  ADD CONSTRAINT `FK_E3DADF7582E2CF35` FOREIGN KEY (`atelier_id`) REFERENCES `atelier` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

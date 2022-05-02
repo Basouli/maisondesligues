@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% block title %}
+        <h2 class="container text-center">
+            ADMINISTRATION
+        </h2>
+    {% endblock %}
+    
+    <div class="container d-flex flex-row justify-content-center align-items-center">
+        <a class="m-2 p-2 h-25 btn btn-success" href={{ path('_admin_creer_Atelier') }}>Créer un atelier</a>
+        <a class="m-2 p-2 h-25 btn btn-success" href={{ path('_admin_creer_Theme') }}>Créer un thême</a>
+        <a class="m-2 p-2 h-25 btn btn-success" href={{ path('_admin_creer_Vacacion') }}>Crée une vacation</a>
+    </div>
+
+{% block creationMenu %}
+
+{% endblock %}
+
+{% endblock %}

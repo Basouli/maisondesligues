@@ -1,8 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
-
+<h1>
+	{{ congres.libelle}} <br>
+	Date de début du congré :
+	{{ congres.dateDebut|date('Y-m-d')}}<br>
+	Date de fin du congré :
+	{{ congres.dateFin|date('Y-m-d')}}
+</h1>
 	{% for atelier in ateliers %}
 		<article>
 			<h2>

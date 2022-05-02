@@ -25,7 +25,7 @@ class Congres
     /**
      * @ORM\Column(type="integer")
      */
-    private $TarifsInscription;
+    private $tarif;
 
     /**
      * @ORM\Column(type="datetime")
@@ -38,9 +38,14 @@ class Congres
     private $dateFin;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Inscription::class, inversedBy="congres")
+     * @ORM\Column(type="string", length=255)
      */
-    private $Inscriptions;
+    private $ville;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $lieux;
 
     public function getId(): ?int
     {
@@ -59,26 +64,26 @@ class Congres
         return $this;
     }
 
-    public function getTarifsInscription(): ?int
+    public function getTarif(): ?int
     {
-        return $this->TarifsInscription;
+        return $this->tarif;
     }
 
-    public function setTarifsInscription(int $TarifsInscription): self
+    public function setTarif(int $tarif): self
     {
-        $this->TarifsInscription = $TarifsInscription;
+        $this->tarif = $tarif;
 
         return $this;
     }
 
-    public function getDateDebut(): ?string
+    public function getDateDebut(): ?\DateTimeInterface
     {
         return $this->dateDebut;
     }
 
-    public function setDateDebut(string $dateDebut): self
+    public function setDateDebut(\DateTimeInterface $dateDebut): self
     {
-        $this->date = $dateDebut;
+        $this->dateDebut = $dateDebut;
 
         return $this;
     }
@@ -95,14 +100,26 @@ class Congres
         return $this;
     }
 
-    public function getInscriptions(): ?Inscription
+    public function getVille(): ?string
     {
-        return $this->Inscriptions;
+        return $this->ville;
     }
 
-    public function setInscriptions(?Inscription $Inscriptions): self
+    public function setVille(string $ville): self
     {
-        $this->Inscriptions = $Inscriptions;
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    public function getLieux(): ?string
+    {
+        return $this->lieux;
+    }
+
+    public function setLieux(string $lieux): self
+    {
+        $this->lieux = $lieux;
 
         return $this;
     }

@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\AtelierRepository;
 use App\Repository\CategorieChambreRepository;
+use App\Repository\CongresRepository;
 use App\Repository\HotelRepository;
 use App\Repository\NuiteRepository;
 use App\Repository\ProposerRepository;
@@ -25,7 +26,8 @@ class MainController extends AbstractController
         VacationRepository $vacationRepository,
         CategorieChambreRepository $categorieChambreRepository,
         ProposerRepository $proposerRepository,
-        HotelRepository $hotelRepository
+        HotelRepository $hotelRepository,
+        CongresRepository $congresRepository
     ): Response {
 
 
@@ -33,6 +35,8 @@ class MainController extends AbstractController
         $ateliers = $atelierRepository->findAll();
         $themes = $themeRepository->findAll();
 
+        $congres= $congresRepository->find(1);
+        
         $proposer = $proposerRepository->findAll();
         $hotel = $hotelRepository->findAll();
 
@@ -46,7 +50,8 @@ class MainController extends AbstractController
             'vacations' => $vacations,
             'categorieChambres' => $categorieChambre,
             'tarifs' => $proposer,
-            'hotels' => $hotel
+            'hotels' => $hotel,
+            'congres' => $congres
         ]);
     }
 }

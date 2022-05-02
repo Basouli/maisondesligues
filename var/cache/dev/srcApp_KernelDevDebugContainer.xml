@@ -3220,22 +3220,23 @@
         <argument>make:migration</argument>
       </call>
     </service>
-    <service id=".service_locator.4xPFdRh" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.VdOM98V" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="atelierRepository" type="service_closure" id="App\Repository\AtelierRepository"/>
         <argument key="categorieChambreRepository" type="service_closure" id="App\Repository\CategorieChambreRepository"/>
+        <argument key="congresRepository" type="service_closure" id="App\Repository\CongresRepository"/>
         <argument key="hotelRepository" type="service_closure" id="App\Repository\HotelRepository"/>
         <argument key="proposerRepository" type="service_closure" id="App\Repository\ProposerRepository"/>
         <argument key="themeRepository" type="service_closure" id="App\Repository\ThemeRepository"/>
         <argument key="vacationRepository" type="service_closure" id="App\Repository\VacationRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.ZYoLsqf" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.mGw7s2v" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="App\Controller\MainController::index" type="service_closure" id=".service_locator.4xPFdRh"/>
-        <argument key="App\Controller\MainController:index" type="service_closure" id=".service_locator.4xPFdRh"/>
+        <argument key="App\Controller\MainController::index" type="service_closure" id=".service_locator.VdOM98V"/>
+        <argument key="App\Controller\MainController:index" type="service_closure" id=".service_locator.VdOM98V"/>
       </argument>
     </service>
     <service id=".service_locator._cmka45" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -3538,12 +3539,12 @@
     <service id="debug.argument_resolver.request.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\RequestValueResolver" public="false"/>
     <service id="debug.argument_resolver.session.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\SessionValueResolver" public="false"/>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.ZYoLsqf"/>
+      <argument type="service" id=".service_locator.mGw7s2v"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.ZYoLsqf"/>
+      <argument type="service" id=".service_locator.mGw7s2v"/>
     </service>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <argument type="service" id=".service_locator.yKqPwPL"/>
@@ -3854,7 +3855,7 @@
     <service id="doctrine.migrations.metadata_storage" alias="doctrine.migrations.storage.table_storage"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.CmORmuK" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.ZYoLsqf"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.mGw7s2v"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>

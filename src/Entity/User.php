@@ -4,10 +4,12 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
 class User implements UserInterface
 {
@@ -33,6 +35,17 @@ class User implements UserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+
+    /**
+     * @ORM\Column(type="integer", nullable=false)
+     */
+    private $numlicencie;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Licencie::class, inversedBy="user", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $licencie;
 
     public function getId(): ?int
     {
@@ -113,5 +126,29 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getNumlicencie(): ?int
+    {
+        return $this->numlicencie;
+    }
+
+    public function setNumlicencie(int $numlicencie): self
+    {
+        $this->numlicencie = $numlicencie;
+
+        return $this;
+    }
+
+    public function getLicencie(): ?Licencie
+    {
+        return $this->licencie;
+    }
+
+    public function setLicencie(Licencie $licencie): self
+    {
+        $this->licencie = $licencie;
+
+        return $this;
     }
 }

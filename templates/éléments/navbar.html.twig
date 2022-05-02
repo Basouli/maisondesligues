@@ -47,11 +47,11 @@
                     <a class="nav-link" href="/login">Se connecter
                     </a>
                     
-                    <a class="nav-link" href="#">S'inscrire
+                    <a class="nav-link" href="/register">S'inscrire
                     </a>
 
                     {% if is_granted('ROLE_USER') %}
-                        <a class="nav-link" href="#">Administrer
+                        <a class="nav-link" href="{{ path('_admin_menuCreation') }}">Administrer
                         </a>
                     {% endif %}
                     

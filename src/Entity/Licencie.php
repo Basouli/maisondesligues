@@ -79,6 +79,11 @@ class Licencie
      */
     private $qualite;
 
+    /**
+     * @ORM\OneToOne(targetEntity=User::class, mappedBy="licencie", cascade={"persist", "remove"})
+     */
+    private $user;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -224,6 +229,23 @@ class Licencie
     public function setQualite(?Qualite $qualite): self
     {
         $this->qualite = $qualite;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(User $user): self
+    {
+        // set the owning side of the relation if necessary
+        if ($user->getLicencie() !== $this) {
+            $user->setLicencie($this);
+        }
+
+        $this->user = $user;
 
         return $this;
     }

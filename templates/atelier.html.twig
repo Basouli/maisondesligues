@@ -1,11 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {% block title %}
-        <h2 class="container">
-            Tout les Ateliers
-        </h2>
-    {% endblock %}
+    <h2 class="container">
+        {% block title %}Tout les Ateliers{% endblock %}
+    </h2>
     
     <div class="container p-8">
         <table class="table table-hover">

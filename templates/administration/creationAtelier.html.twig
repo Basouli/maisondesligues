@@ -2,6 +2,16 @@
 {% extends 'administration/creationMenu.html.twig' %}
 
 {% block creationMenu %}
-    
+<br>
+<form>
+  <div class="container d-flex flex-row justify-content-center align-items-center">
+    <label for="name">Saisissez le nom de l'atelier: </label>
+    <input type="text" id="atelier" name="atelier" required
+       minlength="0" maxlength="20" size="20">
+       </div>
+
+       <a href={{ path('_admin_creer_Atelier')}}
+
+       </form>
 {% endblock %}
 

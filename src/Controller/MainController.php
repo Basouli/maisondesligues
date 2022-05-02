@@ -21,57 +21,35 @@ class MainController extends AbstractController
      * @Route("/", name="app_main")
      */
     public function index(
-        CongresRepository $congresRepository
-    ): Response {
-        
-        $congres = $congresRepository->find(1);
-        
-        return $this->render('home/home.html.twig', [
-            'controller_name' => 'MainController',
-            'congres' => $congres
-        ]);
-    }
-    
-    /**
-     * @Route("/ateliers", name="_ateliers")
-     */
-    public function atelier(
         AtelierRepository $atelierRepository,
-        ThemeRepository $themeRepository
+        ThemeRepository $themeRepository,
+        VacationRepository $vacationRepository,
+        CategorieChambreRepository $categorieChambreRepository,
+        ProposerRepository $proposerRepository,
+        HotelRepository $hotelRepository,
+        CongresRepository $congresRepository
     ): Response {
 
         $ateliers = $atelierRepository->findAll();
         $themes = $themeRepository->findAll();
-        
-        return $this->render('atelier/tousAtelier.html.twig', [
-            'controller_name' => 'MainController',
-            'ateliers' => $ateliers,
-            'themes' => $themes
-        ]);
-    }
-    
-    /**
-     * @Route("/hotels", name="_hotels")
-     */
-    public function hotels(
-        VacationRepository $vacationRepository,
-        CategorieChambreRepository $categorieChambreRepository,
-        ProposerRepository $proposerRepository,
-        HotelRepository $hotelRepository
-    ): Response {
 
+        $congres= $congresRepository->find(1);
+        
         $proposer = $proposerRepository->findAll();
         $hotel = $hotelRepository->findAll();
 
         $vacations = $vacationRepository->findAll();
         $categorieChambre = $categorieChambreRepository->findAll();
-        
-        return $this->render('hotel/tousHotel.html.twig', [
+
+        return $this->render('home/home.html.twig', [
             'controller_name' => 'MainController',
+            'ateliers' => $ateliers,
+            'themes' => $themes,
             'vacations' => $vacations,
             'categorieChambres' => $categorieChambre,
             'tarifs' => $proposer,
-            'hotels' => $hotel
+            'hotels' => $hotel,
+            'congres' => $congres
         ]);
     }
 

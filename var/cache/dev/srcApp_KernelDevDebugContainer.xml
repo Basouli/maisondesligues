@@ -241,7 +241,6 @@
     <parameter key="security.role_hierarchy.roles" type="collection">
       <parameter key="ROLE_ADMIN" type="collection">
         <parameter>ROLE_USER</parameter>
-        <parameter>ROLE_LICENCIE</parameter>
       </parameter>
       <parameter key="ROLE_USER" type="collection">
         <parameter>ROLE_LICENCIE</parameter>

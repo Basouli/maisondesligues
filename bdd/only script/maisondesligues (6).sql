@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 02, 2022 at 06:56 AM
+-- Generation Time: May 02, 2022 at 07:27 AM
 -- Server version: 5.7.31
 -- PHP Version: 7.4.9
 
@@ -163,14 +163,21 @@ CREATE TABLE IF NOT EXISTS `compte` (
 DROP TABLE IF EXISTS `congres`;
 CREATE TABLE IF NOT EXISTS `congres` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `inscriptions_id` int(11) DEFAULT NULL,
   `libelle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tarifs_inscription` int(11) NOT NULL,
+  `tarif` int(11) NOT NULL,
   `date_debut` datetime NOT NULL,
   `date_fin` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `IDX_D89031458E2AD382` (`inscriptions_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `ville` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lieux` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `congres`
+--
+
+INSERT INTO `congres` (`id`, `libelle`, `tarif`, `date_debut`, `date_fin`, `ville`, `lieux`) VALUES
+(1, 'Les assises de l\'escrime', 110, '2013-09-14 00:00:00', '2013-09-15 00:00:00', 'Lille', 'Grand Palais');
 
 -- --------------------------------------------------------
 
@@ -192,7 +199,9 @@ CREATE TABLE IF NOT EXISTS `doctrine_migration_versions` (
 
 INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
 ('DoctrineMigrations\\Version20220418142109', '2022-04-25 07:35:35', 1027),
-('DoctrineMigrations\\Version20220502065521', '2022-05-02 06:55:28', 1052);
+('DoctrineMigrations\\Version20220502065521', '2022-05-02 06:55:28', 1052),
+('DoctrineMigrations\\Version20220502070918', '2022-05-02 07:09:23', 79),
+('DoctrineMigrations\\Version20220502071603', '2022-05-02 07:16:07', 113);
 
 -- --------------------------------------------------------
 
@@ -820,12 +829,6 @@ ALTER TABLE `atelier_inscription`
 --
 ALTER TABLE `compte`
   ADD CONSTRAINT `FK_CFF65260B56DCD74` FOREIGN KEY (`licencie_id`) REFERENCES `licencie` (`id`);
-
---
--- Constraints for table `congres`
---
-ALTER TABLE `congres`
-  ADD CONSTRAINT `FK_D89031458E2AD382` FOREIGN KEY (`inscriptions_id`) REFERENCES `inscription` (`id`);
 
 --
 -- Constraints for table `inscription`

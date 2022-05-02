@@ -41,8 +41,6 @@ class MainController extends AbstractController
         $vacations = $vacationRepository->findAll();
         $categorieChambre = $categorieChambreRepository->findAll();
 
-    public function index(): Response
-    {
         return $this->render('home/home.html.twig', [
             'controller_name' => 'MainController',
             'ateliers' => $ateliers,

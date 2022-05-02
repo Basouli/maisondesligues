@@ -30,8 +30,6 @@ class MainController extends AbstractController
         CongresRepository $congresRepository
     ): Response {
 
-
-
         $ateliers = $atelierRepository->findAll();
         $themes = $themeRepository->findAll();
 
@@ -54,4 +52,5 @@ class MainController extends AbstractController
             'congres' => $congres
         ]);
     }
+
 }

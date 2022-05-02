@@ -30,50 +30,47 @@ class AdministrationController extends AbstractController
     // CREER ___________________________________________________________________________________________________ CREER
     
     /**
-     * @Route("creer", name="_creer")
+     * @Route("menuCreation", name="_menuCreation")
      */
-    public function creer(): Response
+    public function menuCreation(): Response
     {
         //radio btn : atelier, thème ou vacation
-        //javascript adapter le form
+   
         
-        return $this->render('inscription_atelier/index.html.twig', [
+        return $this->render('administration/creationMenu.html.twig', [
+            'controller_name' => 'InscriptionAtelierController',
+        ]);
+    }
+    
+    
+    /**
+     * @Route("creerAtelier", name="_creer_Atelier")
+     */
+    public function creerAtelier(): Response
+    {
+        return $this->render('administration/creationAtelier.html.twig', [
+            'controller_name' => 'InscriptionAtelierController',
+        ]);
+    }
+   
+    /**
+       * @Route("creerVacacion", name="_creer_Vacacion")
+     */
+    public function creerVacacion(): Response
+    {
+        return $this->render('administration/index.html.twig', [
             'controller_name' => 'InscriptionAtelierController',
         ]);
     }
     
     /**
-     * @Route("creer_submit", name="_creer_submit")
+        * @Route("creerTheme", name="_creer_Theme")
      */
-    public function creerSubmit(): Response
+    public function creerTheme(): Response
     {
-        return $this->render('inscription_atelier/index.html.twig', [
+        return $this->render('administration/index.html.twig', [
             'controller_name' => 'InscriptionAtelierController',
         ]);
-    }
-    
-    /**
-     * 
-     */
-    private function creerAtelier()
-    {
-        //
-    }
-    
-    /**
-     * 
-     */
-    private function creerVacacion()
-    {
-        //
-    }
-    
-    /**
-     * 
-     */
-    private function creerTheme()
-    {
-        //
     }
     
     // MODIFIER __________________________________________________________________________________________________ MODIFIER

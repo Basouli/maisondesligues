@@ -27,6 +27,8 @@ return [
     'app_compte_change_password_submit' => [[], ['_controller' => 'App\\Controller\\CompteController::changePasswordSubmit'], [], [['text', '/compte/change_password_submit']], [], []],
     '_licencie_index' => [[], ['_controller' => 'App\\Controller\\LicencieController::index'], [], [['text', '/licencie/index']], [], []],
     'app_main' => [[], ['_controller' => 'App\\Controller\\MainController::index'], [], [['text', '/']], [], []],
+    '_ateliers' => [[], ['_controller' => 'App\\Controller\\MainController::atelier'], [], [['text', '/ateliers']], [], []],
+    '_hotels' => [[], ['_controller' => 'App\\Controller\\MainController::hotels'], [], [['text', '/hotels']], [], []],
     'app_login' => [[], ['_controller' => 'App\\Controller\\SecurityController::login'], [], [['text', '/login']], [], []],
     'app_logout' => [[], ['_controller' => 'App\\Controller\\SecurityController::logout'], [], [['text', '/logout']], [], []],
 ];

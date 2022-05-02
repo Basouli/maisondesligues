@@ -1,64 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<h1>
-	{{ congres.libelle}} <br>
-	Date de début du congré :
-	{{ congres.dateDebut|date('Y-m-d')}}<br>
-	Date de fin du congré :
-	{{ congres.dateFin|date('Y-m-d')}}
-</h1>
-	{% for atelier in ateliers %}
-		<article>
-			<h2>
-				{{ atelier.libelle }}
-				{% for vacation in atelier.vacations %}
-					<h6>
-						Date de début de l'atelier :
-						{{vacation.dateheureDebut|date('d-m-Y H:i')}}
-					</h6>
-
-					<h6>
-						Date de fin de l'atelier :
-						{{vacation.dateheureFin|date('d-m-Y H:i')}}
-					</h6>
-				{% endfor %}
-				<br>
-				{% for theme in atelier.themes %}
-					<ul class="list-group">
-						<li class="list-group-item d-flex justify-content-between align-items-center">
-							{{theme.libelle}}
-						</li>
-					</ul>
-
-
-				{% endfor %}
-			</h2>
-		{% endfor %}
-
-
-		{% for hotel in hotels %}
-			<h1>
-				{{ hotel.nom}}
-			</h1>
-			{% for tarifs in hotel.tarifs %}
-				<ul class="list-group">
-					<li class="list-group-item d-flex justify-content-between align-items-center">
-						{{ tarifs.categorie.libelleCategorie }}
-						:
-						{% if tarifs.categorie.libelleCategorie == 'Supplément repas' %}
-							{{ tarifs.tarifNuite }}
-							€
-						{% else %}
-							{{ tarifs.tarifNuite }}
-							€ / nuit
-
-						{% endif %}
-						<br>
-					</li>
-				</ul>
-			{% endfor %}
-		{% endfor %}
-
-
-	{% endblock %}
+    <div class="container">
+        <h1 class="text-center">
+            {{ congres.libelle}} <br>
+        </h1>
+        
+        <h2 class="text-center">
+            Date de début du congré :
+            {{ congres.dateDebut|date('d-m-Y')}}<br>
+            Date de fin du congré :
+            {{ congres.dateFin|date('d-m-Y')}}
+        </h2>
+    </div>
+{% endblock %}

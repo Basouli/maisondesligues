@@ -25,6 +25,8 @@ return [
         '/compte/change_password_submit' => [[['_route' => 'app_compte_change_password_submit', '_controller' => 'App\\Controller\\CompteController::changePasswordSubmit'], null, null, null, false, false, null]],
         '/licencie/index' => [[['_route' => '_licencie_index', '_controller' => 'App\\Controller\\LicencieController::index'], null, null, null, false, false, null]],
         '/' => [[['_route' => 'app_main', '_controller' => 'App\\Controller\\MainController::index'], null, null, null, false, false, null]],
+        '/ateliers' => [[['_route' => '_ateliers', '_controller' => 'App\\Controller\\MainController::atelier'], null, null, null, false, false, null]],
+        '/hotels' => [[['_route' => '_hotels', '_controller' => 'App\\Controller\\MainController::hotels'], null, null, null, false, false, null]],
         '/login' => [[['_route' => 'app_login', '_controller' => 'App\\Controller\\SecurityController::login'], null, null, null, false, false, null]],
         '/logout' => [[['_route' => 'app_logout', '_controller' => 'App\\Controller\\SecurityController::logout'], null, null, null, false, false, null]],
     ],

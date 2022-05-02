@@ -10,10 +10,11 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use App\Entity\Atelier;
 use App\Form\AtelierType;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
 * @Route("admin/", name="_admin")
-* IsGranted("ROLE_USER")
+* @IsGranted("ROLE_USER")
 */
 class AdministrationController extends AbstractController
 {
@@ -51,23 +52,23 @@ class AdministrationController extends AbstractController
      * @Route("creerAtelier", name="_creer_Atelier")
      */
     public function creerAtelier(Request $request, \Doctrine\ORM\EntityManagerInterface $manager): Response
-    {
+    {        
         $atelier = new Atelier();
-        $atelier->setNbPlaceMaxi(500);
-
         $form = $this->createForm(AtelierType::class, $atelier);
         $form->handleRequest($request);
-
+        
         if($form->isSubmitted() && $form->isValid()){
-
+            /*
             $atelier = $form->getLibelle();
             $manager->persist($atelier);
             $manager->flush();
-            $this->addFlash('notification', "L'atelier a bien été enregistré");
+            */
+            $this->get('session')->getFlashBag()->add('notification', 'ok!');
         }
         
         return $this->render('administration/creationAtelier.html.twig', [
             'controller_name' => 'InscriptionAtelierController',
+            'form' => $form->createView(),
         ]);
     }
    

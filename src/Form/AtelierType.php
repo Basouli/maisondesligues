@@ -6,6 +6,8 @@ use App\Entity\Atelier;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use App\Repository\AtelierRepository;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class AtelierType extends AbstractType
 {
@@ -15,7 +17,7 @@ class AtelierType extends AbstractType
             ->add('libelle')
             ->add('nbPlaceMaxi')
             ->add('inscriptions')
-            ->add('themes')
+            //->add('themes')
         ;
     }
 

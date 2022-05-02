@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : dim. 01 mai 2022 à 16:08
--- Version du serveur : 8.0.27
--- Version de PHP : 7.4.26
+-- Généré le : lun. 02 mai 2022 à 14:41
+-- Version du serveur :  5.7.31
+-- Version de PHP : 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,11 +29,23 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `atelier`;
 CREATE TABLE IF NOT EXISTS `atelier` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `libelle` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nb_place_maxi` int NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `libelle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nb_place_maxi` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `atelier`
+--
+
+INSERT INTO `atelier` (`id`, `libelle`, `nb_place_maxi`) VALUES
+(1, 'Le club et son projet', 500),
+(2, 'Le fonctionnement du club', 400),
+(3, 'Les outils à disposition et remis aux clubs', 350),
+(4, 'Observatoire des métiers de l\'escrime', 400),
+(5, 'I.F.F.E', 500),
+(6, 'Développement durable', 600);
 
 -- --------------------------------------------------------
 
@@ -43,8 +55,8 @@ CREATE TABLE IF NOT EXISTS `atelier` (
 
 DROP TABLE IF EXISTS `atelier_inscription`;
 CREATE TABLE IF NOT EXISTS `atelier_inscription` (
-  `atelier_id` int NOT NULL,
-  `inscription_id` int NOT NULL,
+  `atelier_id` int(11) NOT NULL,
+  `inscription_id` int(11) NOT NULL,
   PRIMARY KEY (`atelier_id`,`inscription_id`),
   KEY `IDX_20EC8DC882E2CF35` (`atelier_id`),
   KEY `IDX_20EC8DC85DAC5993` (`inscription_id`)
@@ -58,10 +70,21 @@ CREATE TABLE IF NOT EXISTS `atelier_inscription` (
 
 DROP TABLE IF EXISTS `categorie_chambre`;
 CREATE TABLE IF NOT EXISTS `categorie_chambre` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `libelle_categorie` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `libelle_categorie` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `categorie_chambre`
+--
+
+INSERT INTO `categorie_chambre` (`id`, `libelle_categorie`) VALUES
+(1, 'Single + Petit déjeuner'),
+(2, 'Twin + Petits déjeuners'),
+(3, 'Single + Petit déjeuner'),
+(4, 'Double + Petits déjeuners'),
+(5, 'Supplément repas');
 
 -- --------------------------------------------------------
 
@@ -71,13 +94,13 @@ CREATE TABLE IF NOT EXISTS `categorie_chambre` (
 
 DROP TABLE IF EXISTS `club`;
 CREATE TABLE IF NOT EXISTS `club` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `nom` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `adresse1` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `adresse2` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `cp` varchar(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ville` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tel` varchar(14) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `adresse1` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `adresse2` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cp` varchar(6) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ville` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tel` varchar(14) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -116,20 +139,27 @@ INSERT INTO `club` (`id`, `nom`, `adresse1`, `adresse2`, `cp`, `ville`, `tel`) V
 -- --------------------------------------------------------
 
 --
--- Structure de la table `compte`
+-- Structure de la table `congres`
 --
 
-DROP TABLE IF EXISTS `compte`;
-CREATE TABLE IF NOT EXISTS `compte` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `licencie_id` int NOT NULL,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `numlicence` int NOT NULL,
-  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `roles` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `UNIQ_CFF65260B56DCD74` (`licencie_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+DROP TABLE IF EXISTS `congres`;
+CREATE TABLE IF NOT EXISTS `congres` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `libelle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tarif` int(11) NOT NULL,
+  `date_debut` datetime NOT NULL,
+  `date_fin` datetime NOT NULL,
+  `ville` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lieux` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `congres`
+--
+
+INSERT INTO `congres` (`id`, `libelle`, `tarif`, `date_debut`, `date_fin`, `ville`, `lieux`) VALUES
+(1, 'Les assises de l\'escrime', 110, '2013-09-14 00:00:00', '2013-09-15 00:00:00', 'Lille', 'Grand Palais');
 
 -- --------------------------------------------------------
 
@@ -139,11 +169,11 @@ CREATE TABLE IF NOT EXISTS `compte` (
 
 DROP TABLE IF EXISTS `doctrine_migration_versions`;
 CREATE TABLE IF NOT EXISTS `doctrine_migration_versions` (
-  `version` varchar(191) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `version` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
   `executed_at` datetime DEFAULT NULL,
-  `execution_time` int DEFAULT NULL,
+  `execution_time` int(11) DEFAULT NULL,
   PRIMARY KEY (`version`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Déchargement des données de la table `doctrine_migration_versions`
@@ -151,7 +181,10 @@ CREATE TABLE IF NOT EXISTS `doctrine_migration_versions` (
 
 INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
 ('DoctrineMigrations\\Version20220418142109', '2022-04-25 07:35:35', 1027),
-('DoctrineMigrations\\Version20220501123544', '2022-05-01 12:37:27', 678);
+('DoctrineMigrations\\Version20220502065521', '2022-05-02 06:55:28', 1052),
+('DoctrineMigrations\\Version20220502070918', '2022-05-02 07:09:23', 79),
+('DoctrineMigrations\\Version20220502071603', '2022-05-02 07:16:07', 113),
+('DoctrineMigrations\\Version20220502115156', '2022-05-02 11:53:09', 830);
 
 -- --------------------------------------------------------
 
@@ -161,16 +194,24 @@ INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_
 
 DROP TABLE IF EXISTS `hotel`;
 CREATE TABLE IF NOT EXISTS `hotel` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `nom` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `adresse1` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `adresse2` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `cp` varchar(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ville` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tel` varchar(14) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `mail` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `adresse1` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `adresse2` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cp` varchar(6) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ville` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tel` varchar(14) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mail` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `hotel`
+--
+
+INSERT INTO `hotel` (`id`, `nom`, `adresse1`, `adresse2`, `cp`, `ville`, `tel`, `mail`) VALUES
+(1, 'ibis Styles Lille Centre Gare Beffroi 3 étoiles', '172 rue Pierre Mauroy', NULL, '59000', 'LILLE', '320300054', 'H1384@ACCOR.COM'),
+(2, 'ibis budget Lille Centre 2 étoiles', '10 Rue de Courtrai', NULL, '59000', 'LILLE', '892683078', 'H5208@ACCOR.COM');
 
 -- --------------------------------------------------------
 
@@ -180,11 +221,11 @@ CREATE TABLE IF NOT EXISTS `hotel` (
 
 DROP TABLE IF EXISTS `inscription`;
 CREATE TABLE IF NOT EXISTS `inscription` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `compte_id` int NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
   `date_inscription` date NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `UNIQ_5E90F6D6F2C56620` (`compte_id`)
+  UNIQUE KEY `UNIQ_5E90F6D6A76ED395` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -195,18 +236,18 @@ CREATE TABLE IF NOT EXISTS `inscription` (
 
 DROP TABLE IF EXISTS `licencie`;
 CREATE TABLE IF NOT EXISTS `licencie` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `club_id` int NOT NULL,
-  `qualite_id` int NOT NULL,
-  `numlicence` int NOT NULL,
-  `nom` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `prenom` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `adresse1` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `adresse2` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `cp` varchar(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ville` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tel` varchar(14) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `mail` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `club_id` int(11) NOT NULL,
+  `qualite_id` int(11) NOT NULL,
+  `numlicence` int(11) NOT NULL,
+  `nom` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `prenom` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `adresse1` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `adresse2` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cp` varchar(6) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ville` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tel` varchar(14) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mail` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `date_adhesion` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_3B75561261190A32` (`club_id`),
@@ -528,10 +569,10 @@ INSERT INTO `licencie` (`id`, `club_id`, `qualite_id`, `numlicence`, `nom`, `pre
 
 DROP TABLE IF EXISTS `nuite`;
 CREATE TABLE IF NOT EXISTS `nuite` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `inscription_id` int DEFAULT NULL,
-  `hotel_id` int DEFAULT NULL,
-  `categorie_chambre_id` int DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `inscription_id` int(11) DEFAULT NULL,
+  `hotel_id` int(11) DEFAULT NULL,
+  `categorie_chambre_id` int(11) DEFAULT NULL,
   `date_nuitee` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_8D4CB7155DAC5993` (`inscription_id`),
@@ -547,14 +588,24 @@ CREATE TABLE IF NOT EXISTS `nuite` (
 
 DROP TABLE IF EXISTS `proposer`;
 CREATE TABLE IF NOT EXISTS `proposer` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `hotel_id` int DEFAULT NULL,
-  `categorie_id` int DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `hotel_id` int(11) DEFAULT NULL,
+  `categorie_id` int(11) DEFAULT NULL,
   `tarif_nuite` double NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_21866C153243BB18` (`hotel_id`),
   KEY `IDX_21866C15BCF5E72D` (`categorie_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `proposer`
+--
+
+INSERT INTO `proposer` (`id`, `hotel_id`, `categorie_id`, `tarif_nuite`) VALUES
+(1, 1, 3, 112),
+(2, 1, 4, 122),
+(3, 2, 1, 61.2),
+(4, 2, 2, 62.2);
 
 -- --------------------------------------------------------
 
@@ -564,8 +615,8 @@ CREATE TABLE IF NOT EXISTS `proposer` (
 
 DROP TABLE IF EXISTS `qualite`;
 CREATE TABLE IF NOT EXISTS `qualite` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `libelle_qualite` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `libelle_qualite` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -606,10 +657,10 @@ INSERT INTO `qualite` (`id`, `libelle_qualite`) VALUES
 
 DROP TABLE IF EXISTS `restauration`;
 CREATE TABLE IF NOT EXISTS `restauration` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `inscription_id` int DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `inscription_id` int(11) DEFAULT NULL,
   `date_restauration` date NOT NULL,
-  `type_repas` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type_repas` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_898B1EF15DAC5993` (`inscription_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -622,10 +673,48 @@ CREATE TABLE IF NOT EXISTS `restauration` (
 
 DROP TABLE IF EXISTS `theme`;
 CREATE TABLE IF NOT EXISTS `theme` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `libelle` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `libelle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `theme`
+--
+
+INSERT INTO `theme` (`id`, `libelle`) VALUES
+(1, 'Diagnostic et identification des critères du club'),
+(2, 'Analyse  systémique de l\'environement et méthodologie de mise en oeuvre du projet'),
+(3, 'Actions solidaires et innovantes'),
+(4, 'Financements'),
+(5, 'Outils et documentation'),
+(6, 'Valoriser et communiquer sur le projet'),
+(7, 'Création - Obligation légales'),
+(8, 'Gestion du personnel, de la structure et des conflits'),
+(9, 'Relations internes, externes et avec le comité départementale, la ligue et la férération'),
+(10, 'Conventions'),
+(11, 'Partenariats'),
+(12, 'Logiciel FFE de gestion des compétitions (présesentation et formation)'),
+(13, 'Présentation du document << l\'arbitrage en images >>'),
+(14, 'Plaquette << Guide projet du club >>'),
+(15, 'Labellisation du club'),
+(16, 'Aménagement des équipements'),
+(17, 'Assurances'),
+(18, 'Observations et analyse sur l\'encadrement actuel'),
+(19, 'Propositions de nouveaux schémas d\'organisation'),
+(20, 'Profils types et pratiques innovantes'),
+(21, 'Critères et seuils nécéssaires à la pérénité de l\'emploi'),
+(22, 'Exercice du métier d\'enseignant (Avantages et inconvénients'),
+(23, 'Présentation'),
+(24, 'Fonctionnement'),
+(25, 'Objectifs'),
+(26, 'Nouveaux diplômes'),
+(27, 'Financements'),
+(28, 'Les enjeux climatiques, énergétiques et économiques'),
+(29, 'Les enjeux climatiques, énergétiques et économiques'),
+(30, 'Sport et développement durable'),
+(31, 'Démarche fédérale'),
+(32, 'Echange');
 
 -- --------------------------------------------------------
 
@@ -635,12 +724,49 @@ CREATE TABLE IF NOT EXISTS `theme` (
 
 DROP TABLE IF EXISTS `theme_atelier`;
 CREATE TABLE IF NOT EXISTS `theme_atelier` (
-  `theme_id` int NOT NULL,
-  `atelier_id` int NOT NULL,
+  `theme_id` int(11) NOT NULL,
+  `atelier_id` int(11) NOT NULL,
   PRIMARY KEY (`theme_id`,`atelier_id`),
   KEY `IDX_B8D81D0059027487` (`theme_id`),
   KEY `IDX_B8D81D0082E2CF35` (`atelier_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `theme_atelier`
+--
+
+INSERT INTO `theme_atelier` (`theme_id`, `atelier_id`) VALUES
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 1),
+(5, 1),
+(6, 1),
+(7, 2),
+(8, 2),
+(9, 2),
+(10, 2),
+(11, 2),
+(12, 3),
+(13, 3),
+(14, 3),
+(15, 3),
+(16, 3),
+(17, 3),
+(18, 4),
+(19, 4),
+(20, 4),
+(21, 4),
+(22, 4),
+(23, 5),
+(24, 5),
+(25, 5),
+(26, 5),
+(27, 5),
+(28, 6),
+(29, 6),
+(30, 6),
+(31, 6);
 
 -- --------------------------------------------------------
 
@@ -650,10 +776,12 @@ CREATE TABLE IF NOT EXISTS `theme_atelier` (
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(180) COLLATE utf8mb4_unicode_ci NOT NULL,
   `roles` json NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `numlicencie` int(11) NOT NULL,
+  `licencie_id` int(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_8D93D649E7927C74` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -662,11 +790,11 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Déchargement des données de la table `user`
 --
 
-INSERT INTO `user` (`id`, `email`, `roles`, `password`) VALUES
-(1, 'basil.collette@outlook.fr', '[]', '$argon2id$v=19$m=65536,t=4,p=1$SURGYklCYWwwVXJLN2xhcA$kmU4YrvwyrUDN7eY1PjJWGxD6HbcYUavI4ay1OwHhjI'),
-(2, 'admin@mdl.fr', '[]', '$argon2id$v=19$m=65536,t=4,p=1$SURGYklCYWwwVXJLN2xhcA$kmU4YrvwyrUDN7eY1PjJWGxD6HbcYUavI4ay1OwHhjI'),
-(3, 'licencie@mdl.fr', '[]', '$argon2id$v=19$m=65536,t=4,p=1$RWpFbjM0bDBKcm5RbGFEeQ$8K48roVrIhud4YfeWmBnaKn2JEPDSiNSMm7lkmVckDA'),
-(4, 'user@mdl.fr', '[]', '$argon2id$v=19$m=65536,t=4,p=1$QThILmNJRG9EdTRVYy9sOQ$xtU31qVy6z7hYCFwi6zic3xYwXqGA8rDRstlJAnyutA');
+INSERT INTO `user` (`id`, `email`, `roles`, `password`, `numlicencie`, `licencie_id`) VALUES
+(1, 'basil.collette@outlook.fr', '[]', '$argon2id$v=19$m=65536,t=4,p=1$SURGYklCYWwwVXJLN2xhcA$kmU4YrvwyrUDN7eY1PjJWGxD6HbcYUavI4ay1OwHhjI', 0, 0),
+(2, 'admin@mdl.fr', '[\"ROLE_ADMIN\"]', '$argon2id$v=19$m=65536,t=4,p=1$SURGYklCYWwwVXJLN2xhcA$kmU4YrvwyrUDN7eY1PjJWGxD6HbcYUavI4ay1OwHhjI', 0, 0),
+(3, 'licencie@mdl.fr', '[\"ROLE_LICENCIE\"]', '$argon2id$v=19$m=65536,t=4,p=1$RWpFbjM0bDBKcm5RbGFEeQ$8K48roVrIhud4YfeWmBnaKn2JEPDSiNSMm7lkmVckDA', 0, 0),
+(4, 'user@mdl.fr', '[\"ROLE_USER\"]', '$argon2id$v=19$m=65536,t=4,p=1$QThILmNJRG9EdTRVYy9sOQ$xtU31qVy6z7hYCFwi6zic3xYwXqGA8rDRstlJAnyutA', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -676,13 +804,25 @@ INSERT INTO `user` (`id`, `email`, `roles`, `password`) VALUES
 
 DROP TABLE IF EXISTS `vacation`;
 CREATE TABLE IF NOT EXISTS `vacation` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `atelier_id` int DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `atelier_id` int(11) DEFAULT NULL,
   `dateheure_debut` datetime NOT NULL,
   `dateheure_fin` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_E3DADF7582E2CF35` (`atelier_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `vacation`
+--
+
+INSERT INTO `vacation` (`id`, `atelier_id`, `dateheure_debut`, `dateheure_fin`) VALUES
+(1, 1, '2013-09-14 11:30:00', '2013-09-14 12:30:00'),
+(2, 2, '2013-09-14 11:00:00', '2013-09-14 12:30:00'),
+(3, 3, '2013-09-14 14:00:00', '2013-09-14 15:30:00'),
+(4, 4, '2013-09-14 16:00:00', '2013-09-14 17:30:00'),
+(5, 5, '2013-09-15 09:00:00', '2013-09-15 10:30:00'),
+(6, 6, '2013-09-15 11:00:00', '2013-09-15 12:30:00');
 
 --
 -- Contraintes pour les tables déchargées
@@ -696,16 +836,10 @@ ALTER TABLE `atelier_inscription`
   ADD CONSTRAINT `FK_20EC8DC882E2CF35` FOREIGN KEY (`atelier_id`) REFERENCES `atelier` (`id`) ON DELETE CASCADE;
 
 --
--- Contraintes pour la table `compte`
---
-ALTER TABLE `compte`
-  ADD CONSTRAINT `FK_CFF65260B56DCD74` FOREIGN KEY (`licencie_id`) REFERENCES `licencie` (`id`);
-
---
 -- Contraintes pour la table `inscription`
 --
 ALTER TABLE `inscription`
-  ADD CONSTRAINT `FK_5E90F6D6F2C56620` FOREIGN KEY (`compte_id`) REFERENCES `compte` (`id`);
+  ADD CONSTRAINT `FK_5E90F6D6A76ED395` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 
 --
 -- Contraintes pour la table `licencie`

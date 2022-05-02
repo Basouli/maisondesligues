@@ -2,6 +2,27 @@
 {% extends 'administration/creationMenu.html.twig' %}
 
 {% block creationMenu %}
-    
-{% endblock %}
+    <br />
+    <div class="border-top my-3"></div>
+    <br /> 
+            
+    {{ form_start(form, {'attr': {'class': 'd-flex flex-column justify-content-center align-items-start'}}) }}
+        {{ form_row(form.libelle, {
+            label: 'libelle'
+        }) }}
 
+        {{ form_row(form.nbPlaceMaxi, {
+            label: 'nbPlaceMaxi'
+        }) }}
+        
+        {{ form_row(form.inscriptions, {
+            label: 'inscriptions'
+        }) }}
+        {#
+        {{ form_row(form.themes, {
+            label: 'themes'
+        }) }}
+        #}
+        <button type="submit" class="btn btn-success align-self-center">Register</button>
+    {{ form_end(form) }}
+{% endblock %}

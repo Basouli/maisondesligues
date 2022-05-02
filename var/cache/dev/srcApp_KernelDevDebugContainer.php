@@ -16,6 +16,6 @@ if (!\class_exists(srcApp_KernelDevDebugContainer::class, false)) {
 
 return new \ContainerDyrPkKb\srcApp_KernelDevDebugContainer([
     'container.build_hash' => 'DyrPkKb',
-    'container.build_id' => '2a97ed70',
-    'container.build_time' => 1651499728,
+    'container.build_id' => '3ea9f147',
+    'container.build_time' => 1651500956,
 ], __DIR__.\DIRECTORY_SEPARATOR.'ContainerDyrPkKb');

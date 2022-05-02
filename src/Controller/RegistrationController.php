@@ -43,7 +43,7 @@ class RegistrationController extends AbstractController
             } else {
                 $this->get('session')->getFlashBag()->add('notification', 'Les Mot-de-passe ne sont pas similaires');
                 
-                return $this->redirectToRoute('app_login');
+                return $this->redirectToRoute('app_register');
             }
         }
 

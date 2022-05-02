@@ -45,11 +45,13 @@ class Inscription
      */
     private $restaurations;
 
+
     public function __construct()
     {
         $this->ateliers = new ArrayCollection();
         $this->nuites = new ArrayCollection();
         $this->restaurations = new ArrayCollection();
+     
     }
 
     public function getId(): ?int
@@ -167,4 +169,13 @@ class Inscription
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, Congres>
+     */
+    public function getCongres(): Collection
+    {
+        return $this->congres;
+    }
+
 }

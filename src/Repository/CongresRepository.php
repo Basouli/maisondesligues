@@ -2,32 +2,32 @@
 
 namespace App\Repository;
 
-use App\Entity\Theme;
+use App\Entity\Congres;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Theme|null find($id, $lockMode = null, $lockVersion = null)
- * @method Theme|null findOneBy(array $criteria, array $orderBy = null)
- * @method Theme[]    findAll()
- * @method Theme[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @extends ServiceEntityRepository<Congres>
+ *
+ * @method Congres|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Congres|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Congres[]    findAll()
+ * @method Congres[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ThemeRepository extends ServiceEntityRepository
+class CongresRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Theme::class);
+        parent::__construct($registry, Congres::class);
     }
-
-
 
     /**
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function add(Theme $entity, bool $flush = true): void
+    public function add(Congres $entity, bool $flush = true): void
     {
         $this->_em->persist($entity);
         if ($flush) {
@@ -39,7 +39,7 @@ class ThemeRepository extends ServiceEntityRepository
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function remove(Theme $entity, bool $flush = true): void
+    public function remove(Congres $entity, bool $flush = true): void
     {
         $this->_em->remove($entity);
         if ($flush) {
@@ -48,15 +48,15 @@ class ThemeRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return Theme[] Returns an array of Theme objects
+    //  * @return Congres[] Returns an array of Congres objects
     //  */
     /*
     public function findByExampleField($value)
     {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.exampleField = :val')
             ->setParameter('val', $value)
-            ->orderBy('t.id', 'ASC')
+            ->orderBy('c.id', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
@@ -65,10 +65,10 @@ class ThemeRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Theme
+    public function findOneBySomeField($value): ?Congres
     {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.exampleField = :val')
             ->setParameter('val', $value)
             ->getQuery()
             ->getOneOrNullResult()

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 25, 2022 at 09:37 AM
+-- Generation Time: May 02, 2022 at 07:27 AM
 -- Server version: 5.7.31
 -- PHP Version: 7.4.9
 
@@ -33,7 +33,19 @@ CREATE TABLE IF NOT EXISTS `atelier` (
   `libelle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nb_place_maxi` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `atelier`
+--
+
+INSERT INTO `atelier` (`id`, `libelle`, `nb_place_maxi`) VALUES
+(1, 'Le club et son projet', 500),
+(2, 'Le fonctionnement du club', 400),
+(3, 'Les outils à disposition et remis aux clubs', 350),
+(4, 'Observatoire des métiers de l\'escrime', 400),
+(5, 'I.F.F.E', 500),
+(6, 'Développement durable', 600);
 
 -- --------------------------------------------------------
 
@@ -61,7 +73,18 @@ CREATE TABLE IF NOT EXISTS `categorie_chambre` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `libelle_categorie` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `categorie_chambre`
+--
+
+INSERT INTO `categorie_chambre` (`id`, `libelle_categorie`) VALUES
+(1, 'Single + Petit déjeuner'),
+(2, 'Twin + Petits déjeuners'),
+(3, 'Single + Petit déjeuner'),
+(4, 'Double + Petits déjeuners'),
+(5, 'Supplément repas');
 
 -- --------------------------------------------------------
 
@@ -134,6 +157,31 @@ CREATE TABLE IF NOT EXISTS `compte` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `congres`
+--
+
+DROP TABLE IF EXISTS `congres`;
+CREATE TABLE IF NOT EXISTS `congres` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `libelle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tarif` int(11) NOT NULL,
+  `date_debut` datetime NOT NULL,
+  `date_fin` datetime NOT NULL,
+  `ville` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lieux` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `congres`
+--
+
+INSERT INTO `congres` (`id`, `libelle`, `tarif`, `date_debut`, `date_fin`, `ville`, `lieux`) VALUES
+(1, 'Les assises de l\'escrime', 110, '2013-09-14 00:00:00', '2013-09-15 00:00:00', 'Lille', 'Grand Palais');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `doctrine_migration_versions`
 --
 
@@ -150,7 +198,10 @@ CREATE TABLE IF NOT EXISTS `doctrine_migration_versions` (
 --
 
 INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
-('DoctrineMigrations\\Version20220418142109', '2022-04-25 07:35:35', 1027);
+('DoctrineMigrations\\Version20220418142109', '2022-04-25 07:35:35', 1027),
+('DoctrineMigrations\\Version20220502065521', '2022-05-02 06:55:28', 1052),
+('DoctrineMigrations\\Version20220502070918', '2022-05-02 07:09:23', 79),
+('DoctrineMigrations\\Version20220502071603', '2022-05-02 07:16:07', 113);
 
 -- --------------------------------------------------------
 
@@ -169,7 +220,15 @@ CREATE TABLE IF NOT EXISTS `hotel` (
   `tel` varchar(14) COLLATE utf8mb4_unicode_ci NOT NULL,
   `mail` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `hotel`
+--
+
+INSERT INTO `hotel` (`id`, `nom`, `adresse1`, `adresse2`, `cp`, `ville`, `tel`, `mail`) VALUES
+(1, 'ibis Styles Lille Centre Gare Beffroi 3 étoiles', '172 rue Pierre Mauroy', NULL, '59000', 'LILLE', '320300054', 'H1384@ACCOR.COM'),
+(2, 'ibis budget Lille Centre 2 étoiles', '10 Rue de Courtrai', NULL, '59000', 'LILLE', '892683078', 'H5208@ACCOR.COM');
 
 -- --------------------------------------------------------
 
@@ -553,7 +612,17 @@ CREATE TABLE IF NOT EXISTS `proposer` (
   PRIMARY KEY (`id`),
   KEY `IDX_21866C153243BB18` (`hotel_id`),
   KEY `IDX_21866C15BCF5E72D` (`categorie_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `proposer`
+--
+
+INSERT INTO `proposer` (`id`, `hotel_id`, `categorie_id`, `tarif_nuite`) VALUES
+(1, 1, 3, 112),
+(2, 1, 4, 122),
+(3, 2, 1, 61.2),
+(4, 2, 2, 62.2);
 
 -- --------------------------------------------------------
 
@@ -624,7 +693,45 @@ CREATE TABLE IF NOT EXISTS `theme` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `libelle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `theme`
+--
+
+INSERT INTO `theme` (`id`, `libelle`) VALUES
+(1, 'Diagnostic et identification des critères du club'),
+(2, 'Analyse  systémique de l\'environement et méthodologie de mise en oeuvre du projet'),
+(3, 'Actions solidaires et innovantes'),
+(4, 'Financements'),
+(5, 'Outils et documentation'),
+(6, 'Valoriser et communiquer sur le projet'),
+(7, 'Création - Obligation légales'),
+(8, 'Gestion du personnel, de la structure et des conflits'),
+(9, 'Relations internes, externes et avec le comité départementale, la ligue et la férération'),
+(10, 'Conventions'),
+(11, 'Partenariats'),
+(12, 'Logiciel FFE de gestion des compétitions (présesentation et formation)'),
+(13, 'Présentation du document << l\'arbitrage en images >>'),
+(14, 'Plaquette << Guide projet du club >>'),
+(15, 'Labellisation du club'),
+(16, 'Aménagement des équipements'),
+(17, 'Assurances'),
+(18, 'Observations et analyse sur l\'encadrement actuel'),
+(19, 'Propositions de nouveaux schémas d\'organisation'),
+(20, 'Profils types et pratiques innovantes'),
+(21, 'Critères et seuils nécéssaires à la pérénité de l\'emploi'),
+(22, 'Exercice du métier d\'enseignant (Avantages et inconvénients'),
+(23, 'Présentation'),
+(24, 'Fonctionnement'),
+(25, 'Objectifs'),
+(26, 'Nouveaux diplômes'),
+(27, 'Financements'),
+(28, 'Les enjeux climatiques, énergétiques et économiques'),
+(29, 'Les enjeux climatiques, énergétiques et économiques'),
+(30, 'Sport et développement durable'),
+(31, 'Démarche fédérale'),
+(32, 'Echange');
 
 -- --------------------------------------------------------
 
@@ -641,6 +748,43 @@ CREATE TABLE IF NOT EXISTS `theme_atelier` (
   KEY `IDX_B8D81D0082E2CF35` (`atelier_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `theme_atelier`
+--
+
+INSERT INTO `theme_atelier` (`theme_id`, `atelier_id`) VALUES
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 1),
+(5, 1),
+(6, 1),
+(7, 2),
+(8, 2),
+(9, 2),
+(10, 2),
+(11, 2),
+(12, 3),
+(13, 3),
+(14, 3),
+(15, 3),
+(16, 3),
+(17, 3),
+(18, 4),
+(19, 4),
+(20, 4),
+(21, 4),
+(22, 4),
+(23, 5),
+(24, 5),
+(25, 5),
+(26, 5),
+(27, 5),
+(28, 6),
+(29, 6),
+(30, 6),
+(31, 6);
+
 -- --------------------------------------------------------
 
 --
@@ -655,7 +799,19 @@ CREATE TABLE IF NOT EXISTS `vacation` (
   `dateheure_fin` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_E3DADF7582E2CF35` (`atelier_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `vacation`
+--
+
+INSERT INTO `vacation` (`id`, `atelier_id`, `dateheure_debut`, `dateheure_fin`) VALUES
+(1, 1, '2013-09-14 11:30:00', '2013-09-14 12:30:00'),
+(2, 2, '2013-09-14 11:00:00', '2013-09-14 12:30:00'),
+(3, 3, '2013-09-14 14:00:00', '2013-09-14 15:30:00'),
+(4, 4, '2013-09-14 16:00:00', '2013-09-14 17:30:00'),
+(5, 5, '2013-09-15 09:00:00', '2013-09-15 10:30:00'),
+(6, 6, '2013-09-15 11:00:00', '2013-09-15 12:30:00');
 
 --
 -- Constraints for dumped tables

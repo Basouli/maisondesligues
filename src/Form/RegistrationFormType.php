@@ -25,7 +25,7 @@ class RegistrationFormType extends AbstractType
                         'message' => 'Please enter your licence number',
                     ]),
                     new Length([
-                        'min' => 11,
+                        'min' => 5,
                         'minMessage' => 'Your licence number should be at least {{ limit }} characters',
                         // max length allowed by Symfony for security reasons
                         'max' => 4096,

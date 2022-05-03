@@ -60,7 +60,7 @@ class ApplicationAuthenticator extends AbstractFormLoginAuthenticator implements
         return $credentials;
     }
 
-    public function getUser($credentials, UserProviderInterface $userProvider)
+    public function getUser($credentials, UserProviderInterface $userProvider, LicencieRepository $licencieRepository)
     {
         $token = new CsrfToken('authenticate', $credentials['csrf_token']);
         if (!$this->csrfTokenManager->isTokenValid($token)) {
@@ -68,6 +68,10 @@ class ApplicationAuthenticator extends AbstractFormLoginAuthenticator implements
         }
 
         $user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $credentials['email']]);
+        
+        //$user = $this->entityManager->getRepository(User::class)->findOneBy(['numlicence' => $credentials['numlicence']]);
+        //$licencie = $licencieRepository->findBynumlicence($form->get('numlicencie')->getData())[0];
+        //$user->setLicencie($licencie);
 
         if (!$user) {
             throw new UsernameNotFoundException('Email could not be found.');

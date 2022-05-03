@@ -4,7 +4,9 @@
 
 {% block body %}
     <div class="d-flex flex-column shadow-lg py-5 px-5 mb-5 bg-white rounded justify-content-center align-items-center">
-        
+        {% if nomLicencie is defined %}
+            <p>{{ nomLicencie }}</p>
+        {% endif %}
         <h1>Register</h1>
         
         <br />

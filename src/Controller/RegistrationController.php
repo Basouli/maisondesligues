@@ -10,45 +10,65 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use App\Repository\LicencieRepository;
 
 class RegistrationController extends AbstractController
 {
     /**
      * @Route("/register", name="app_register")
      */
-    public function register(Request $request, UserPasswordEncoderInterface $userPasswordEncoder, EntityManagerInterface $entityManager): Response
+    public function register(LicencieRepository $licencieRepository, Request $request, UserPasswordEncoderInterface $userPasswordEncoder, EntityManagerInterface $entityManager): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
-
+        $nomLicencie = "";
+        
         if ($form->isSubmitted() && $form->isValid()) {
             if ($form->get('plainPassword')->getData() == $form->get('plainPasswordBis')->getData()) {
                 
-                $user = new User();
+                $numLicence = $form->get('numlicencie')->getData();
+                $licencie = $licencieRepository->findBynumlicence($numLicence)[0];
+                //$licencie = $licencieRepository->findOneByNumLicence($form->get('numlicencie')->getData());
                 
-                // encode the plain password
-                $user->setPassword(
-                $userPasswordEncoder->encodePassword(
-                        $user,
-                        $form->get('plainPassword')->getData()
-                    )
-                );
+                if (true) { //Licencie not null
+                    
+                    $user->setEmail($licencie->getMail());
+                
+                    if ($licencie->getQualite()->getId() == 1) {
+                        $user->setRoles(array("ROLE_LICENCIE"));
+                    } else {
+                        $user->setRoles(array("ROLE_USER"));
+                    }
 
-                $entityManager->persist($user);
-                $entityManager->flush();
-                // do anything else you need here, like send an email
+                    $user->setLicencie($licencie);
 
-                return $this->redirectToRoute('app_main');
+                    $user->setNumlicencie($numLicence);
+
+                    $user->setPassword(
+                        $userPasswordEncoder->encodePassword(
+                            $user,
+                            $form->get('plainPassword')->getData()
+                        )
+                    );
+
+                    $entityManager->persist($user);
+                    $entityManager->flush();
+
+                    return $this->redirectToRoute('app_main');
+                } else {
+                    $this->get('session')->getFlashBag()->add('notification', 'Aucun licencie reconnu sous le numéro ' . $numLicence);
+                    return $this->redirectToRoute('app_register');
+                }
             } else {
                 $this->get('session')->getFlashBag()->add('notification', 'Les Mot-de-passe ne sont pas similaires');
-                
                 return $this->redirectToRoute('app_register');
             }
         }
 
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
+            'nomLicencie' => $nomLicencie
         ]);
     }
 }

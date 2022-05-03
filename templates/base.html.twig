@@ -16,26 +16,26 @@
         {% endblock %}
     </head>
 
-    {% block navbar %}
-        {{ include('./éléments/navbar.html.twig') }}
-    {% endblock %}
+    <body class="h-100 d-flex flex-column justify-content-start align-items-center">
+        
+        {% block navbar %}
+            {{ include('./éléments/navbar.html.twig') }}
+        {% endblock %}
     
-    <br />
-    <div class="border-top my-3"></div>
-    <div class="border-top my-3"></div>
-    <br />  
-
-    {% for message in app.flashes('notification') %}
-        <div class="alert alert-warning">
-            {{ message }}
+        <div class="h-100 w-100 d-flex flex-column justify-content-center align-items-center" style="overflow-y: scroll;">
+            {% for message in app.flashes('notification') %}
+                <div class="alert alert-warning">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        
+            {% block body %}
+            {% endblock %}
         </div>
-    {% endfor %}
-
-    <body class="h-100 d-flex flex-column justify-content-center align-items-center">
-        {% block body %}{% endblock %}
+        
+        {% block footer %}
+            {% include "éléments/footer.html.twig" %}
+        {% endblock %}
+        
     </body>
-
-    {% block footer %}
-        {% include "éléments/footer.html.twig" %}
-    {% endblock %}
 </html>

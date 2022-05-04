@@ -17,7 +17,7 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/register", name="app_register")
      */
-    public function register(LicencieRepository $licencieRepository, Request $request, UserPasswordEncoderInterface $userPasswordEncoder, EntityManagerInterface $entityManager): Response
+    public function register(LicencieRepository $licencieRepository, UserRepository $userRepository, Request $request, UserPasswordEncoderInterface $userPasswordEncoder, EntityManagerInterface $entityManager): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -26,6 +26,11 @@ class RegistrationController extends AbstractController
         
         if ($form->isSubmitted() && $form->isValid()) {
             if ($form->get('plainPassword')->getData() == $form->get('plainPasswordBis')->getData()) {
+                
+                if ($userRepository->findBynumlicence($numLicence)[0] != null) {
+                    $this->get('session')->getFlashBag()->add('notification', 'Le licencie numéro ' . $numLicence . ' possède déjà un compte');
+                    return $this->redirectToRoute('app_register');
+                }
                 
                 $numLicence = $form->get('numlicencie')->getData();
                 $licencie = $licencieRepository->findBynumlicence($numLicence)[0];

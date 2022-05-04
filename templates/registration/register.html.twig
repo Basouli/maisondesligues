@@ -12,17 +12,22 @@
         <br />
         
         {{ form_start(registrationForm, {'attr': {'class': 'd-flex flex-column justify-content-center align-items-start'}}) }}
-            {{ form_row(registrationForm.numlicencie, {
-                label: 'Numéro Licence'
-            }) }}
-
-            {{ form_row(registrationForm.plainPassword, {
-                label: 'Password'
-            }) }}
-            {{ form_row(registrationForm.plainPasswordBis, {
-                label: 'Password Bis'
-            }) }}
-
+            
+            <div class="w-100 d-flex flex-row justify-content-between my-2">
+                {{ form_label(registrationForm, 'Numéro Licence') }}
+                {{ form_widget(registrationForm.numlicencie) }}
+            </div>
+            
+            <div class="w-100 d-flex flex-row justify-content-between my-2">
+                {{ form_label(registrationForm, 'Password') }}
+                {{ form_widget(registrationForm.plainPassword) }}
+            </div>
+            
+            <div class="w-100 d-flex flex-row justify-content-between my-2">
+                {{ form_label(registrationForm, 'Password Bis') }}
+                {{ form_widget(registrationForm.plainPasswordBis) }}
+            </div>
+   
             {#{{ form_row(registrationForm.agreeTerms) }}#}
 
             <button type="submit" class="btn btn-success align-self-center">Register</button>

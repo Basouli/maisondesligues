@@ -35,11 +35,7 @@ class RegistrationController extends AbstractController
                     
                     $user->setEmail($licencie->getMail());
                 
-                    if ($licencie->getQualite()->getId() == 1) {
-                        $user->setRoles(array("ROLE_LICENCIE"));
-                    } else {
-                        $user->setRoles(array("ROLE_USER"));
-                    }
+                    $user->setRoles(array("ROLE_INSCRIT"));
 
                     $user->setLicencie($licencie);
 

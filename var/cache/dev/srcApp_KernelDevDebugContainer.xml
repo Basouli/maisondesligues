@@ -245,9 +245,9 @@
         <parameter>ROLE_USER</parameter>
       </parameter>
       <parameter key="ROLE_USER" type="collection">
-        <parameter>ROLE_LICENCIE</parameter>
+        <parameter>ROLE_INSCRIT</parameter>
       </parameter>
-      <parameter key="ROLE_LICENCIE" type="collection"/>
+      <parameter key="ROLE_INSCRIT" type="collection"/>
     </parameter>
     <parameter key="security.access.denied_url">null</parameter>
     <parameter key="security.authentication.manager.erase_credentials">true</parameter>

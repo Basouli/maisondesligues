@@ -44,7 +44,7 @@
                 <!-- MENU COMPTE _______________________________________________________________________________________________________________ MENU COMPTE -->
                 
                 <div id="accountNav" class="d-flex flex-row">
-                    {% if not is_granted('ROLE_LICENCIE') %}
+                    {% if not is_granted('ROLE_INSCRIT') %}
                         <a class="nav-link" href="/login">Se connecter</a>
                         
                         <a class="nav-link" href="/register">S'inscrire</a>

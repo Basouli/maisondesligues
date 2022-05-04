@@ -60,14 +60,14 @@ class ApplicationAuthenticator extends AbstractFormLoginAuthenticator implements
         return $credentials;
     }
 
-    public function getUser($credentials, UserProviderInterface $userProvider, LicencieRepository $licencieRepository)
+    public function getUser($credentials, UserProviderInterface $userProvider)
     {
         $token = new CsrfToken('authenticate', $credentials['csrf_token']);
         if (!$this->csrfTokenManager->isTokenValid($token)) {
             throw new InvalidCsrfTokenException();
         }
 
-        $user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $credentials['email']]);
+        //$user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $credentials['email']]);
         
         //$user = $this->entityManager->getRepository(User::class)->findOneBy(['numlicence' => $credentials['numlicence']]);
         //$licencie = $licencieRepository->findBynumlicence($form->get('numlicencie')->getData())[0];

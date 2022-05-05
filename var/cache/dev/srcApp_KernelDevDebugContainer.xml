@@ -4405,12 +4405,13 @@
         <argument key="vacationRepository" type="service_closure" id="App\Repository\VacationRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.OPBx5Sr" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.jN99q57" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
         <argument key="licencieRepository" type="service_closure" id="App\Repository\LicencieRepository"/>
         <argument key="userPasswordEncoder" type="service_closure" id="security.user_password_encoder.generic"/>
+        <argument key="userRepository" type="service_closure" id="App\Repository\UserRepository"/>
       </argument>
     </service>
     <service id=".service_locator.g.xob4v" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -4419,20 +4420,20 @@
         <argument key="authenticationUtils" type="service_closure" id="security.authentication_utils"/>
       </argument>
     </service>
-    <service id=".service_locator.2P8XYPh" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.v52whOE" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AdministrationController::creerAtelier" type="service_closure" id=".service_locator.s.tJs.w"/>
         <argument key="App\Controller\MainController::atelier" type="service_closure" id=".service_locator.O5_hgMh"/>
         <argument key="App\Controller\MainController::hotels" type="service_closure" id=".service_locator.rxxnD6K"/>
         <argument key="App\Controller\MainController::index" type="service_closure" id=".service_locator.n.BUrHr"/>
-        <argument key="App\Controller\RegistrationController::register" type="service_closure" id=".service_locator.OPBx5Sr"/>
+        <argument key="App\Controller\RegistrationController::register" type="service_closure" id=".service_locator.jN99q57"/>
         <argument key="App\Controller\SecurityController::login" type="service_closure" id=".service_locator.g.xob4v"/>
         <argument key="App\Controller\AdministrationController:creerAtelier" type="service_closure" id=".service_locator.s.tJs.w"/>
         <argument key="App\Controller\MainController:atelier" type="service_closure" id=".service_locator.O5_hgMh"/>
         <argument key="App\Controller\MainController:hotels" type="service_closure" id=".service_locator.rxxnD6K"/>
         <argument key="App\Controller\MainController:index" type="service_closure" id=".service_locator.n.BUrHr"/>
-        <argument key="App\Controller\RegistrationController:register" type="service_closure" id=".service_locator.OPBx5Sr"/>
+        <argument key="App\Controller\RegistrationController:register" type="service_closure" id=".service_locator.jN99q57"/>
         <argument key="App\Controller\SecurityController:login" type="service_closure" id=".service_locator.g.xob4v"/>
       </argument>
     </service>
@@ -4846,12 +4847,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.2P8XYPh"/>
+      <argument type="service" id=".service_locator.v52whOE"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.2P8XYPh"/>
+      <argument type="service" id=".service_locator.v52whOE"/>
     </service>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <argument type="service" id=".service_locator.AuyCW4N"/>
@@ -5208,7 +5209,7 @@
     <service id="Symfony\Component\Security\Core\User\UserCheckerInterface" alias="security.user_checker" public="false"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.CmORmuK" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.2P8XYPh"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.v52whOE"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>

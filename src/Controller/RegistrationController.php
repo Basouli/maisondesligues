@@ -31,37 +31,39 @@ class RegistrationController extends AbstractController
                 if ($userRepository->findBynumlicence($numLicence)[0] != null) {
                     $this->get('session')->getFlashBag()->add('notification', 'Le licencie numéro ' . $numLicence . ' possède déjà un compte');
                     return $this->redirectToRoute('app_register');
-                }
-                
-                $numLicence = $form->get('numlicencie')->getData();
-                $licencie = $licencieRepository->findBynumlicence($numLicence)[0];
-                //$licencie = $licencieRepository->findOneByNumLicence($form->get('numlicencie')->getData());
-                
-                if (true) { //Licencie not null
-                    
-                    $user->setEmail($licencie->getMail());
-                
-                    $user->setRoles(array("ROLE_INSCRIT"));
-
-                    $user->setLicencie($licencie);
-
-                    $user->setNumlicencie($numLicence);
-
-                    $user->setPassword(
-                        $userPasswordEncoder->encodePassword(
-                            $user,
-                            $form->get('plainPassword')->getData()
-                        )
-                    );
-
-                    $entityManager->persist($user);
-                    $entityManager->flush();
-
-                    return $this->redirectToRoute('app_main');
                 } else {
-                    $this->get('session')->getFlashBag()->add('notification', 'Aucun licencie reconnu sous le numéro ' . $numLicence);
-                    return $this->redirectToRoute('app_register');
+                    $numLicence = $form->get('numlicencie')->getData();
+                    $licencie = $licencieRepository->findBynumlicence($numLicence)[0];
+                    //$licencie = $licencieRepository->findOneByNumLicence($form->get('numlicencie')->getData());
+
+                    if ($licencie != null) { //Licencie not null
+
+                        $user->setEmail($licencie->getMail());
+
+                        $user->setRoles(array("ROLE_INSCRIT"));
+
+                        $user->setLicencie($licencie);
+
+                        $user->setNumlicencie($numLicence);
+
+                        $user->setPassword(
+                            $userPasswordEncoder->encodePassword(
+                                $user,
+                                $form->get('plainPassword')->getData()
+                            )
+                        );
+
+                        $entityManager->persist($user);
+                        $entityManager->flush();
+
+                        return $this->redirectToRoute('app_main');
+                        
+                    } else {
+                        $this->get('session')->getFlashBag()->add('notification', 'Aucun licencie reconnu sous le numéro ' . $numLicence);
+                        return $this->redirectToRoute('app_register');
+                    }
                 }
+                                
             } else {
                 $this->get('session')->getFlashBag()->add('notification', 'Les Mot-de-passe ne sont pas similaires');
                 return $this->redirectToRoute('app_register');

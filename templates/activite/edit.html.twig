@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ports{% endblock %}
+
+{% block body %}
+    
+    {{ form_start(form) }}
+    <div class="row">
+        <div class="col-8" id="some-custom-id">
+            {{ form_label(form.nom, 'Nom du port') }}
+            {{ form_widget(form.nom, {'attr': {'placeholder': 'saisir le nom du port'}}) }}
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-4" id="some-custom-id">
+            {{ form_label(form.lePays, 'Pays') }}
+            {{ form_widget(form.lePays) }}
+        </div>
+        <div class="col-4" id="some-custom-id">
+            {{ form_label(form.lesTypes, 'Types de navires acceptés') }}
+            {{ form_widget(form.lesTypes) }}
+        </div>
+    </div>
+            
+    </br>
+    
+    <button type="submit" class='btn btn-success'>
+        Créer
+    </button>
+    {{ form_end(form) }}
+    
+{% endblock %}

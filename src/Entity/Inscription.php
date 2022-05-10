@@ -45,12 +45,18 @@ class Inscription
      */
     private $restaurations;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Activite::class, mappedBy="inscriptions")
+     */
+    private $activites;
+
 
     public function __construct()
     {
         $this->ateliers = new ArrayCollection();
         $this->nuites = new ArrayCollection();
         $this->restaurations = new ArrayCollection();
+        $this->activites = new ArrayCollection();
      
     }
 
@@ -176,6 +182,33 @@ class Inscription
     public function getCongres(): Collection
     {
         return $this->congres;
+    }
+
+    /**
+     * @return Collection<int, Activite>
+     */
+    public function getActivites(): Collection
+    {
+        return $this->activites;
+    }
+
+    public function addActivite(Activite $activite): self
+    {
+        if (!$this->activites->contains($activite)) {
+            $this->activites[] = $activite;
+            $activite->addInscription($this);
+        }
+
+        return $this;
+    }
+
+    public function removeActivite(Activite $activite): self
+    {
+        if ($this->activites->removeElement($activite)) {
+            $activite->removeInscription($this);
+        }
+
+        return $this;
     }
 
 }
